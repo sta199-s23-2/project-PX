@@ -6,8 +6,8 @@ editor: visual
 
 This project was developed by **Panda Xpress** For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/) at Duke University. The team is comprised of the following team members.
 
--   Team member 1: Hi my name is Ellie Coleman and I am a sophomore from Michigan, studying Environmental Science and Pre-Health.
--   Team member 2: Colin Kick is a freshman from outside Philadelphia, studying Environmental Sciences and Policy.
--   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
--   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
--   ...
+-   Team member 1: Ellie Coleman is a sophomore from Michigan, studying Environmental Science and Pre-Health.
+-   Team member 2: Colin Kick is a freshman from Pennsylvania, studying Environmental Sciences and Policy.
+-   Team member 3: Ajani Adovor is a freshman from Pennsylvania, studying Computer Science.
+-   Team member 4: Ayush Gaur is a sophomore from Illinois, studying Public Policy.
+-   Team member 5: **Harssh put your name year state and major here same as above format**
