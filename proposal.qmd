@@ -15,21 +15,11 @@ library(tidyverse)
 
 ## Introduction and data
 
--   Identify the source of the data.
-
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
-
--   Write a brief description of the observations.
-
-This data came from Equity in Athletics Data Analysis (EADA). it was collected through required reports from post-secondary institutions that receive Title IX funding.
+This data came from Equity in Athletics Data Analysis (EADA). It was collected through mandatory reports from post-secondary institutions that receive Title IX funding. The data was collected from 2020 and 2021. The data is looking as equity in college athletics by comparing different aspects of male and female sports. This specific dataset is looking at all schools in the Atlantic Coast Conference. Data was collected on multiple variables including the number of male and female athletes, the number of male and female coaches, and the revenue of male and female sports. There is also information on coaching salaries.
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
-
--   A description of the research topic along with a concise statement of your hypotheses on this topic.
-
--   Identify the types of variables in your research question. Categorical? Quantitative?
+Based on schools in the ACC, are the expenses for male and female sports proportional to the number of male and female athletes? Is there a difference in these proportionalities based on whether the school is public or private? It would be interesting to look at the differences between the amount of money spent by male sports vs female sports and how this compares to the number of male and female athletes. We hypothesize that the expenses for male sports compared to female sports will be disproportionately high given the number of male and female athletes. There will be quantitative variables when looking at expenses of teams and number of athletes. There will also be categorical variables when looking at the different schools (private vs public) and teams (female vs male).
 
 ## Literature
 
@@ -44,8 +34,9 @@ This data came from Equity in Athletics Data Analysis (EADA). it was collected t
 ```{r}
 #| label: load-data-1
 
-equity <- read_csv("data/Schools 2020-21.csv")
-glimpse(equity)
+equity <- read.csv("data/ACC_2020_2021.csv")
+equity |>
+  slice(1:5)
 ```
 
 # Data 2
