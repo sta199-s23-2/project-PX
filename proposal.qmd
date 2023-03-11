@@ -25,8 +25,7 @@ Based on schools in the ACC, are the expenses for male and female sports proport
 
 https://www.tandfonline.com/doi/pdf/10.1080/00221546.2006.11778925?casa_token=WIU1GCI895sAAAAA:w1FWFtPuxYNANBTPOiTttNFZ5up_7Cb9aiQqxKUfIkIAt_puuRYouq5c5HSirIe1idZC8qSHlot2jw
 
-Gender Equity in Intercollegiate Athletics:
-Determinants of Title IX Compliance
+Gender Equity in Intercollegiate Athletics: Determinants of Title IX Compliance
 
 This article analyzes the progress of Title IX in athletics from the late 1990s to the early 2000s. Their resreach looked at the proportionality gap between the number of male and female athletes. The results show that there was improvement in this gap overall. However, certain institutions had a larger gap including institutions in the south and institutions with football teams. Our questions looks to expand on this research and look at more recent numbers on equity in college athletics.
 
@@ -52,29 +51,45 @@ Full glimpse was very long so just sliced the first 5 rows.
 
 -   Write a brief description of the observations.
 
-## Research question
+Federal law requires spills, explosions, and other events involving the spread of toxic chemicals to be reported to the Pipeline and Hazardous Materials Safety Administration (PHMSA). Whether reported by individuals or companies, PHMSA shows these reports on their online portal. However, the data collection of the agency is not idea for analysis. The Data Liberation Project fetches the data from the portal and organizes the data in a way that can be used for statistical analysis. Granted, the amount of data collected is overwhelming, so there will be a focus on data specifically from February 2023. Data seems to show locations and descriptions of the incidents, along with a plethora of other information.
+
+Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+What chemicals are most often found in hazardous spills? How frequently do spills occur? In what situation are these spills most likely to take place.
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
+The primary goal of this research is to discover causes of hazardous spills and who is usually responsible for them.
+
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+
+The majority of these variables are categorical because spills depend on a myriad of factors. However, percentages may come into play when considering chemical analysis
 
 ## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+    https://abcnews.go.com/US/feds-norfolk-southerns-handling-additional-reported-hazmat-concern/story?id=97723774
+
 -   Provide a one paragraph summary about the article.
 
+The article highlights one of the most high profile chemical spills of the last few years. A train derailment in East Palestine, Ohio caused an extreme amount of toxic chemicals to be released into the the surrounding area. Beyond that, there seems to be concerns about additional hazards that were previously unreported according to the federal government. The event has become national news and has brought into question regulations surrounding toxic chemical transport and potentially neglect on behalf of the company Norfolk Southern
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+The research question takes a larger look at hazardous spill incidents and how they are potentially caused. While the East Palestine train derailment is the most infamous example as of late, these spills are actually much more common than many might realize.
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-2
 
-# add code here
+feb_chem_spill_data <- read.csv("data/fetched/2023-02.csv") 
 ```
+
+-   Running into a slight issue here with opening the file
 
 # Data 3
 
