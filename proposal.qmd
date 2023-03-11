@@ -97,7 +97,7 @@ feb_chem_spill_data <- read.csv("data/fetched/2023-02.csv")
 
 -   The source of data is <https://www.census.gov/library/visualizations/interactive/racial-and-ethnic-diversity-in-the-united-states-2010-and-2020-census.html> 
 
--   The data was collected in the **2010 Census and 2020 Census.**
+-   The data was collected from the **2010 Census and 2020 Census.**
 
 -   From looking at the data we can see that there seems to be a higher level of diversity in the western coast states in the US. Furthermore, he states in the Midwest tend to have lesser racial diversity. Furthermore there is a toggle option to switch between the 2010 and 2020 US map to see the changes in racial diversity in each state. This data is mainly used to represent the census data of each race within a state. It specializes in measuring the DI (Diversity Index) which is the probability that two people chosen at random will be from different racial or ethnicity groups.
 
