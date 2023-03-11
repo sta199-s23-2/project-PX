@@ -40,6 +40,8 @@ equity |>
   slice(1:5)
 ```
 
+Full glimpse was very long so just sliced the first 5 rows.
+
 # Data 2
 
 ## Introduction and data
