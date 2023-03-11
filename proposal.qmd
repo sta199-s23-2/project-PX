@@ -15,19 +15,20 @@ library(tidyverse)
 
 ## Introduction and data
 
-This data came from Equity in Athletics Data Analysis (EADA). It was collected through mandatory reports from post-secondary institutions that receive Title IX funding. The data was collected from 2020 and 2021. The data is looking as equity in college athletics by comparing different aspects of male and female sports. This specific dataset is looking at all schools in the Atlantic Coast Conference. Data was collected on multiple variables including the number of male and female athletes, the number of male and female coaches, and the revenue of male and female sports. There is also information on coaching salaries.
+This data came from Equity in Athletics Data Analysis (EADA). It was collected through mandatory reports from post-secondary institutions that receive Title IX funding. The data was collected from 2020 and 2021. The data is looking as equity in college athletics by comparing different aspects of male and female sports. This specific dataset is looking at all schools in the Atlantic Coast Conference. Data was collected on multiple variables including the number of male and female athletes, the number of male and female coaches, and the revenue of male and female sports. There is also information on coaching salaries. There are no ethical concerns we foresee arising.
 
 ## Research question
 
-Based on schools in the ACC, are the expenses for male and female sports proportional to the number of male and female athletes? Is there a difference in these proportionalities based on whether the school is public or private? It would be interesting to look at the differences between the amount of money spent by male sports vs female sports and how this compares to the number of male and female athletes. We hypothesize that the expenses for male sports compared to female sports will be disproportionately high given the number of male and female athletes. There will be quantitative variables when looking at expenses of teams and number of athletes. There will also be categorical variables when looking at the different schools (private vs public) and teams (female vs male).
+Based on schools in the ACC, are the expenses for male and female sports proportional to the number of male and female athletes? Is there a difference in these proportionalities based on whether the school is public or private? It would be interesting to look at the differences between the amount of money spent by male sports vs female sports and how this compares to the number of male and female athletes. While this discrepancy has gotten better in recent years, we hypothesize that the expenses for male sports compared to female sports will be disproportionately high given the number of male and female athletes. This is important because Title IX works to provide equity in college athletics, and there has been a great deal of progess, but there is more progress that can be made. There will be quantitative variables when looking at expenses of teams and number of athletes. There will also be categorical variables when looking at the different schools (private vs public) and teams (female vs male).
 
 ## Literature
 
--   Find one published credible article on the topic you are interested in researching.
+https://www.tandfonline.com/doi/pdf/10.1080/00221546.2006.11778925?casa_token=WIU1GCI895sAAAAA:w1FWFtPuxYNANBTPOiTttNFZ5up_7Cb9aiQqxKUfIkIAt_puuRYouq5c5HSirIe1idZC8qSHlot2jw
 
--   Provide a one paragraph summary about the article.
+Gender Equity in Intercollegiate Athletics:
+Determinants of Title IX Compliance
 
--   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+This article analyzes the progress of Title IX in athletics from the late 1990s to the early 2000s. Their resreach looked at the proportionality gap between the number of male and female athletes. The results show that there was improvement in this gap overall. However, certain institutions had a larger gap including institutions in the south and institutions with football teams. Our questions looks to expand on this research and look at more recent numbers on equity in college athletics.
 
 ## Glimpse of data
 
