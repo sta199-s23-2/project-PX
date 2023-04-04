@@ -9,27 +9,83 @@ execute:
 
 ## Introduction and data
 
-**Research question:** Are men's and women's revenue to expenses ratio proportional (that is, equal in proportion)? How do these proportions compare to each other? How do men's revenues and expenses compare to women's revenues and expenses, on average?
+**Research question:** How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?
 
 To-do's: review/polish, added background, and cite sources with footnote and link at bottom, only 1 data set needed
 
 This data came from Equity in Athletics Data Analysis (EADA). It was collected through mandatory reports from post-secondary institutions that receive Title IX funding. The data was collected from 2020 and 2021. The data is looking as equity in college athletics by comparing different aspects of male and female sports. This specific dataset is looking at all schools in the Atlantic Coast Conference. Data was collected on multiple variables including the number of male and female athletes, the number of male and female coaches, and the revenue of male and female sports. There is also information on coaching salaries. There are no ethical concerns we foresee arising.
 
+https://globalsportmatters.com/business/2022/03/11/for-the-ncaa-building-the-business-of-womens-sports-starts-with-basketball/#:\~:text=Similarly%2C%20Division%20I%20men's%20basketball,than%20%24600%20million%20in%20revenue.
+
+https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/
+
+https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals
+
 ## Methodology
 
-**Note: don't use co-ed, the four variables looked at are "Revenues.Men.s.Team" vs "Revenues.Men.s.Team" and "Expenses.Men.s.Team" vs "Expenses.Men.s.Team"**
+**Note: don't use co-ed, the four variables looked at are "Revenues.Men.s.Team" vs "Revenues.Women.s.Team" and "Expenses.Men.s.Team" vs "Expenses.Women.s.Team"**
 
-1\) summary statistics: calculating average between 2020 and 2021 for each school in each metric (i.e., revenue and expenses)
+1\) summary statistics: calculating average between 2020 and 2021 for each school in each metric (i.e., mens vs. women's revenue and expenses, so 4 metrics: mens average revenue, mens average expenses, womens average revenue, and womens average expenses)
 
-Calculate average difference between men's and women's revenues, then average difference between men's and women's expenses
+Then using those averages, calculate average difference between men's and women's revenues, then average difference between men's and women's expenses
 
-2\) Visualizations: frequency bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
+```{r}
+#| label: calculate-2020-2021-averages
+
+mens_bball_sum_stats <- basketball |>
+  group_by(Institution.Name) |>
+  summarise(avg_rev_men = mean(Revenues.Men.s.Team), 
+            avg_exp_men = mean(Expenses.Men.s.Team)) |>
+  pivot_longer(avg_rev_men:avg_exp_men,
+               names_to = "mens_stat", values_to = "value1")
+
+womens_bball_sum_stats <- basketball |>
+  group_by(Institution.Name) |>
+  summarise(avg_rev_women = mean(Revenues.Women.s.Team),
+            avg_exp_women = mean(Expenses.Women.s.Team)) |>
+  pivot_longer(avg_rev_women:avg_exp_women,
+               names_to = "womens_stat", values_to = "value2")
+
+bball_sum_stats <- mens_bball_sum_stats |>
+  left_join(womens_bball_sum_stats) 
+
+#bball_sum_stats <- bball_sum_stats |> 
+  #mutate(sex = if_else(grepl("women", stat), "Women's", "Men's"))
+
+#bball_sum_stats <- bball_sum_stats |> 
+  #mutate(metric = if_else(grepl("rev", stat), "Revenue", "Expenses"))
+
+
+
+
+
+
+```
+
+2\) Visualizations: bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
+
+```{r}
+#| label: faceted-bar-graph-revenues
+
+bball_sum_stats |>
+  ggplot(
+    aes(x = sex, y = )) +
+    geom_bar(position = "fill") +
+    facet_wrap(~Institution.Name)
+    labs(
+      title = "Relationship Between Sex and Revenue:Expenses Ratio",
+      x = "Above or Below Average Age (29.9 years)",
+      y = "Relative Frequency of Survival", 
+      fill = "Survived"
+    )
+
+```
 
 3\) Justify the choice of statistical method(s) used to answer your research question
 
 ## Results
 
-Showcase how you arrived at answers to your research question using the techniques we have learned in class (and beyond, if you\'re feeling adventurous).
+Showcase how you arrived at answers to your research question using the techniques we have learned in class (and beyond, if you're feeling adventurous).
 
 -   **My notes:** Basically interpret the graphs, for instance if the majority of the men's teams had greater revenue to expenses ratios or the majority of women's teams had greater expenses to revenue ratio, etc.
 
