@@ -9,7 +9,7 @@ execute:
 
 ## Introduction and data
 
-**Research question:** Are men's and women's revenue to expenses ratio proportional (that is, equal in proportion)? How do these proportions compare to each other?
+**Research question:** Are men's and women's revenue to expenses ratio proportional (that is, equal in proportion)? How do these proportions compare to each other? How do men's revenues and expenses compare to women's revenues and expenses, on average?
 
 To-do's: review/polish, added background, and cite sources with footnote and link at bottom, only 1 data set needed
 
@@ -21,8 +21,18 @@ This data came from Equity in Athletics Data Analysis (EADA). It was collected t
 
 1\) summary statistics: calculating average between 2020 and 2021 for each school in each metric (i.e., revenue and expenses)
 
-2\) Visualizations: bar graph of men's vs women's revenue faceted by school; bar graph of men's vs women's expenses faceted by school
+Calculate average difference between men's and women's revenues, then average difference between men's and women's expenses
+
+2\) Visualizations: frequency bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
 
 3\) Justify the choice of statistical method(s) used to answer your research question
 
 ## Results
+
+Showcase how you arrived at answers to your research question using the techniques we have learned in class (and beyond, if you\'re feeling adventurous).
+
+-   **My notes:** Basically interpret the graphs, for instance if the majority of the men's teams had greater revenue to expenses ratios or the majority of women's teams had greater expenses to revenue ratio, etc.
+
+**Note: TL;DR Keep it accurate and thorough but simple**
+
+-   Provide **only the main results** from your analysis. The goal is not to do an exhaustive data analysis (calculate every possible statistic and perform every possible procedure for all variables). Rather, you should demonstrate that you are proficient at asking meaningful questions and answering them using data, that you are skilled in interpreting and presenting results, and that you can accomplish these tasks using R. **More is not better.**
