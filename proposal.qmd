@@ -1,5 +1,5 @@
 ---
-title: "Project title"
+title: "Revenue and Expenses: Men's vs. Women's Basketball"
 subtitle: "Proposal"
 format: html
 editor: visual
@@ -124,7 +124,7 @@ feb_chem_spill_data <- read.csv("data/fetched/2023-02.csv")
 ```{r}
 #| label: load-data-3
 
-diversity_index_state_data <- read.csv("data/census/2010-20.csv") 
+diversity_index_state_data <- read.csv("data/2020Census_PL94_171Redistricting_StatesTechDoc_English.pdf") 
 ```
 
 New data
