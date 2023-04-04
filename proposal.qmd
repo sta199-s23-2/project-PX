@@ -1,5 +1,5 @@
 ---
-title: "Project title"
+title: "Revenue and Expenses: Men's vs. Women's Basketball"
 subtitle: "Proposal"
 format: html
 editor: visual
@@ -115,7 +115,7 @@ feb_chem_spill_data <- read.csv("data/fetched/2023-02.csv")
 
 -   <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5848096/> 
 
--   This NIH article touches on the historic context of racial diversity in America. It shows the map of level of racial diversity between 1980 and 2015. It also expands on what racial groups are most dominant in which states so it provides a lot more context and data of racial diversity in each state. It\'s main purpose is to examine the racial trends within the nation and also predicts future trajectories in the Diversity Index. It also provides reasoning behind certain demographic trends as it looks into immigration, higher fertility, and age structures and trends.
+-   This NIH article touches on the historic context of racial diversity in America. It shows the map of level of racial diversity between 1980 and 2015. It also expands on what racial groups are most dominant in which states so it provides a lot more context and data of racial diversity in each state. It's main purpose is to examine the racial trends within the nation and also predicts future trajectories in the Diversity Index. It also provides reasoning behind certain demographic trends as it looks into immigration, higher fertility, and age structures and trends.
 
 -   My research question builds on the information listed in this article because it takes it further and makes individuals think about where they would want to raise their family. It takes into consideration the vast census data and demographic trends of the data to make one think what state they would prefer to live in based on the demographics.
 
@@ -124,5 +124,5 @@ feb_chem_spill_data <- read.csv("data/fetched/2023-02.csv")
 ```{r}
 #| label: load-data-3
 
-diversity_index_state_data <- read.csv("data/census/2010-20.csv") 
+diversity_index_state_data <- read.csv("data/2020Census_PL94_171Redistricting_StatesTechDoc_English.pdf") 
 ```
