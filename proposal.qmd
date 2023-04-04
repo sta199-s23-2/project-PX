@@ -126,3 +126,11 @@ feb_chem_spill_data <- read.csv("data/fetched/2023-02.csv")
 
 diversity_index_state_data <- read.csv("data/census/2010-20.csv") 
 ```
+
+New data
+
+```{r}
+basketball <- read.csv("data/ACC_Basketball_2020_2021.csv")
+
+glimpse(basketball)
+```
