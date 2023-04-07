@@ -55,14 +55,12 @@ womens_bball_sum_stats <- basketball |>
             avg_exp_women = mean(Expenses.Women.s.Team)) 
 
 bball_sum_stats <- mens_bball_sum_stats |>
-  left_join(womens_bball_sum_stats) 
+  full_join(womens_bball_sum_stats) |>
+  mutate(men_diff = avg_rev_men - avg_exp_men) |>
+  mutate(women_diff = avg_rev_women - avg_exp_women) |>
+  mutate(men_diff = as.factor(men_diff)) |>
+  mutate(women_diff = as.factor(women_diff))
 
-
-bball_sum_stats <- bball_sum_stats |>
-pivot_longer(
-  cols = avg_rev_men:avg_exp_women,
-  names_to = "Stats",
-  values_to = c("Values"))
 ```
 
 2\) Visualizations: bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
@@ -92,6 +90,22 @@ bball_sum_stats |>
 
 ```{r}
 #| label: expense-facet
+
+```
+
+```{r}
+#| label: differece-facet
+
+bball_sum_stats |>
+  ggplot(
+   aes(x = men_diff, group = "Institution.Name")) +
+    geom_bar() +
+    labs(
+      title = "Relationship Between Sex and Revenue:Expenses Ratio
+      in Basketball in the ACC 2020-2021",
+      x = "Revenue and Expense Averages for Men and Women",
+      y = "Amount in $", 
+      fill = "Survived")
 
 ```
 
