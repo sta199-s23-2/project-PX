@@ -99,7 +99,8 @@ plot_rev + geom_bar(stat = "identity", position = 'dodge') +
        y = "Revenue in $",
        title = "Average Revenue in the ACC for 
 Men's vs Women's Basketball in 2020-2021") +
-  scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
+  scale_fill_discrete(name = "Gender", labels = c("Men", "Women")) +
+  scale_y_continuous(labels = scales::comma)
   
 
 ```
@@ -114,7 +115,8 @@ plot_exp + geom_bar(stat = "identity", position = 'dodge') +
        y = "Expenses in $",
        title = "Average Expenses in the ACC for 
 Men's vs Women's Basketball in 2020-2021") +
-  scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
+  scale_fill_discrete(name = "Gender", labels = c("Men", "Women")) +
+  scale_y_continuous(labels = scales::comma)
 ```
 
 ```{r}
@@ -143,3 +145,9 @@ Showcase how you arrived at answers to your research question using the techniqu
 **Note: TL;DR Keep it accurate and thorough but simple**
 
 -   Provide **only the main results** from your analysis. The goal is not to do an exhaustive data analysis (calculate every possible statistic and perform every possible procedure for all variables). Rather, you should demonstrate that you are proficient at asking meaningful questions and answering them using data, that you are skilled in interpreting and presenting results, and that you can accomplish these tasks using R. **More is not better.**
+
+"How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?"
+
+Overview of Results:
+
+From analyzing the
