@@ -89,8 +89,6 @@ names_to = "ref_vs_diff",
 values_to = c("amount"))
 ```
 
-
-
 ```{r}
 #| label: school-revenue
 
@@ -105,6 +103,7 @@ Men's vs Women's Basketball in 2020-2021") +
   
 
 ```
+
 ```{r}
 #| label: school-expenses
 
@@ -131,8 +130,9 @@ Men's vs Women's Basketball in 2020-2021") +
   scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
 ```
 
-
 **3) Justify the choice of statistical method(s) used to answer your research question**
+
+In answering our research question of "How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?" we first narrowed down the data to ACC schools as that would keep the distribution of the data used more uniform and limit the confounding variables. The objective of the study is to display the differences between women's and men's basketball in funding and revenue output, so in doing that we believed creating a bar graph would allow the audience to visualize the size of the difference (double or even triple). Furthermore, grouping the data by each college in the ACC is very important because every program has different user bases and revenue streams so the viewer can take into account the colleges marketing. For example, Duke basketball generates a ton of revenue from their brand as they recruit the top high school recruits, giving the viewer a context of why Duke's difference between men's and women's is larger than the rest of the ACC. Lastly, we focused on mean data rather than median data as we compared the average expenses and revenues of college programs during the 2020 and 2021 year as it is a more accurate measure of comparison.
 
 ## Results
 
