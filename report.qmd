@@ -7,6 +7,18 @@ execute:
   echo: true
 ---
 
+```{r}
+#| label: load-pkgs
+
+library(tidyverse)
+```
+
+```{r}
+#| label: data
+
+basketball <- read.csv("data/ACC_Basketball_2020_2021.csv")
+```
+
 ## Introduction and data
 
 **Research question:** How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?
@@ -27,7 +39,7 @@ https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report
 
 1\) summary statistics: calculating average between 2020 and 2021 for each school in each metric (i.e., mens vs. women's revenue and expenses, so 4 metrics: mens average revenue, mens average expenses, womens average revenue, and womens average expenses)
 
-Then using those averages, calculate average difference between men's and women's revenues, then average difference between men's and women's expenses
+**Then using those averages, calculate average difference between men's and women's revenues, then average difference between men's and women's expenses**
 
 ```{r}
 #| label: calculate-2020-2021-averages
@@ -35,31 +47,22 @@ Then using those averages, calculate average difference between men's and women'
 mens_bball_sum_stats <- basketball |>
   group_by(Institution.Name) |>
   summarise(avg_rev_men = mean(Revenues.Men.s.Team), 
-            avg_exp_men = mean(Expenses.Men.s.Team)) |>
-  pivot_longer(avg_rev_men:avg_exp_men,
-               names_to = "mens_stat", values_to = "value1")
+            avg_exp_men = mean(Expenses.Men.s.Team)) 
 
 womens_bball_sum_stats <- basketball |>
   group_by(Institution.Name) |>
   summarise(avg_rev_women = mean(Revenues.Women.s.Team),
-            avg_exp_women = mean(Expenses.Women.s.Team)) |>
-  pivot_longer(avg_rev_women:avg_exp_women,
-               names_to = "womens_stat", values_to = "value2")
+            avg_exp_women = mean(Expenses.Women.s.Team)) 
 
 bball_sum_stats <- mens_bball_sum_stats |>
   left_join(womens_bball_sum_stats) 
 
-#bball_sum_stats <- bball_sum_stats |> 
-  #mutate(sex = if_else(grepl("women", stat), "Women's", "Men's"))
 
-#bball_sum_stats <- bball_sum_stats |> 
-  #mutate(metric = if_else(grepl("rev", stat), "Revenue", "Expenses"))
-
-
-
-
-
-
+bball_sum_stats <- bball_sum_stats |>
+pivot_longer(
+  cols = avg_rev_men:avg_exp_women,
+  names_to = "Stats",
+  values_to = c("Values"))
 ```
 
 2\) Visualizations: bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
@@ -69,15 +72,26 @@ bball_sum_stats <- mens_bball_sum_stats |>
 
 bball_sum_stats |>
   ggplot(
-    aes(x = sex, y = )) +
-    geom_bar(position = "fill") +
-    facet_wrap(~Institution.Name)
+   aes(x = Stats, fill = Stats)) +
+    geom_bar() +
+    facet_wrap("Institution.Name") +
     labs(
-      title = "Relationship Between Sex and Revenue:Expenses Ratio",
-      x = "Above or Below Average Age (29.9 years)",
-      y = "Relative Frequency of Survival", 
-      fill = "Survived"
-    )
+      title = "Relationship Between Sex and Revenue:Expenses Ratio
+      in Basketball in the ACC 2020-2021",
+      x = "Revenue and Expense Averages for Men and Women",
+      y = "Amount in $", 
+      fill = "Survived")
+    
+
+```
+
+```{r}
+#| label: revenue-facet
+
+```
+
+```{r}
+#| label: expense-facet
 
 ```
 
