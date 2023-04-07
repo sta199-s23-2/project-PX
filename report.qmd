@@ -95,7 +95,7 @@ bball_sum_stats |>
 
 ```
 
-3\) Justify the choice of statistical method(s) used to answer your research question
+**3) Justify the choice of statistical method(s) used to answer your research question**
 
 ## Results
 
