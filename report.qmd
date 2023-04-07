@@ -92,61 +92,45 @@ values_to = c("amount"))
 
 
 ```{r}
+#| label: school-revenue
 
 plot_rev <- ggplot(pivoted_rev, aes(Institution.Name, revenue, fill=gender_rev))
 plot_rev + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = "University",
+       y = "Revenue in $",
+       title = "Average Revenue in the ACC for 
+Men's vs Women's Basketball in 2020-2021") +
+  scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
+  
 
-# pivoted |> 
-#   ggplot(
-#    aes( gender, revenue)) +
-#   facet_wrap("Institution.Name")+
-#     geom_bar() 
 ```
 ```{r}
+#| label: school-expenses
+
 plot_exp <- ggplot(pivoted_exp, aes(Institution.Name, expense, fill=gender_exp))
 plot_exp + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = "University",
+       y = "Expenses in $",
+       title = "Average Expenses in the ACC for 
+Men's vs Women's Basketball in 2020-2021") +
+  scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
 ```
 
 ```{r}
+#| label: diff-expense-revenue
+
 plot_vs <- ggplot(pivoted_vs, aes(Institution.Name, amount, fill=ref_vs_diff))
 plot_vs + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = "University",
+       y = "Amount in $",
+       title = "Difference in Average Revenues and Expenses in the ACC for 
+Men's vs Women's Basketball in 2020-2021") +
+  scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
 ```
 
-
-```{r}
-#| label: faceted-bar-graph-revenues
-
-bball_sum_stats |>
-  ggplot(
-   aes(x = Institution.Name, y = avg_exp_men)) +
-    geom_point() +
-    labs(
-      title = "Relationship Between Sex and Revenue:Expenses Ratio
-      in Basketball in the ACC 2020-2021",
-      x = "Revenue and Expense Averages for Men and Women",
-      y = "Amount in $", 
-      fill = "Survived")+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-```
-
-```{r}
-#| label: revenue-facet
-
-```
-
-```{r}
-#| label: expense-facet
-
-```
-
-```{r}
-#| label: differece-facet
-
-
-```
 
 **3) Justify the choice of statistical method(s) used to answer your research question**
 
