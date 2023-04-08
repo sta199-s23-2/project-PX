@@ -85,7 +85,7 @@ values_to = c("expense"))
 pivoted_vs <- bball_sum_stats |>
 pivot_longer(
 cols = c("rev_diff","exp_diff"),
-names_to = "ref_vs_diff",
+names_to = "ref_vs_exp",
 values_to = c("amount"))
 ```
 
@@ -94,7 +94,7 @@ values_to = c("amount"))
 
 plot_rev <- ggplot(pivoted_rev, aes(Institution.Name, revenue, fill=gender_rev))
 plot_rev + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "University",
        y = "Revenue in $",
        title = "Average Revenue in the ACC for 
@@ -110,7 +110,7 @@ Men's vs Women's Basketball in 2020-2021") +
 
 plot_exp <- ggplot(pivoted_exp, aes(Institution.Name, expense, fill=gender_exp))
 plot_exp + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "University",
        y = "Expenses in $",
        title = "Average Expenses in the ACC for 
@@ -122,14 +122,14 @@ Men's vs Women's Basketball in 2020-2021") +
 ```{r}
 #| label: diff-expense-revenue
 
-plot_vs <- ggplot(pivoted_vs, aes(Institution.Name, amount, fill=ref_vs_diff))
+plot_vs <- ggplot(pivoted_vs, aes(Institution.Name, amount, fill=ref_vs_exp))
 plot_vs + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "University",
        y = "Amount in $",
        title = "Difference in Average Revenues and Expenses in the ACC for 
 Men's vs Women's Basketball in 2020-2021") +
-  scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
+  scale_fill_discrete(name = "Stat", labels = c("Revenue", "Expenses"))
 ```
 
 **3) Justify the choice of statistical method(s) used to answer your research question**
