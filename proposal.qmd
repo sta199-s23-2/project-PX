@@ -128,11 +128,3 @@ The research question takes a larger look at hazardous spill incidents and how t
 #| label: load-data-3
 
 ```
-
-New data
-
-```{r}
-basketball <- read.csv("data/ACC_Basketball_2020_2021.csv")
-
-glimpse(basketball)
-```
