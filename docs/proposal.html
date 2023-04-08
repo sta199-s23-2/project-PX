@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.36">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project title</title>
+<title>Revenue and Expenses: Men’s vs.&nbsp;Women’s Basketball</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -157,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -171,14 +176,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#data-2" id="toc-data-2" class="nav-link" data-scroll-target="#data-2">Data 2</a>
   <ul class="collapse">
   <li><a href="#introduction-and-data-1" id="toc-introduction-and-data-1" class="nav-link" data-scroll-target="#introduction-and-data-1">Introduction and data</a></li>
-  <li><a href="#research-question-1" id="toc-research-question-1" class="nav-link" data-scroll-target="#research-question-1">Research question</a></li>
   <li><a href="#literature-1" id="toc-literature-1" class="nav-link" data-scroll-target="#literature-1">Literature</a></li>
   <li><a href="#glimpse-of-data-1" id="toc-glimpse-of-data-1" class="nav-link" data-scroll-target="#glimpse-of-data-1">Glimpse of data</a></li>
   </ul></li>
   <li><a href="#data-3" id="toc-data-3" class="nav-link" data-scroll-target="#data-3">Data 3</a>
   <ul class="collapse">
   <li><a href="#introduction-and-data-2" id="toc-introduction-and-data-2" class="nav-link" data-scroll-target="#introduction-and-data-2">Introduction and data</a></li>
-  <li><a href="#research-question-2" id="toc-research-question-2" class="nav-link" data-scroll-target="#research-question-2">Research question</a></li>
+  <li><a href="#research-question-1" id="toc-research-question-1" class="nav-link" data-scroll-target="#research-question-1">Research question</a></li>
   <li><a href="#literature-2" id="toc-literature-2" class="nav-link" data-scroll-target="#literature-2">Literature</a></li>
   <li><a href="#glimpse-of-data-2" id="toc-glimpse-of-data-2" class="nav-link" data-scroll-target="#glimpse-of-data-2">Glimpse of data</a></li>
   </ul></li>
@@ -190,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project title</h1>
+<h1 class="title">Revenue and Expenses: Men’s vs.&nbsp;Women’s Basketball</h1>
 <p class="subtitle lead">Proposal</p>
 </div>
 
@@ -208,48 +212,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.2.2</code></pre>
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.0      ✔ purrr   1.0.0 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.5.0 
+✔ readr   2.1.3      ✔ forcats 0.5.2 
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 </div>
 <section id="data-1" class="level1">
 <h1>Data 1</h1>
 <section id="introduction-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h2>
-<ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
-</ul>
+<p>This data came from Equity in Athletics Data Analysis (EADA). It was collected through mandatory reports from post-secondary institutions that receive Title IX funding. The data was collected from 2020 and 2021. The data is looking as equity in college athletics by comparing different aspects of male and female sports. This specific dataset is looking at all schools in the Atlantic Coast Conference. Data was collected on multiple variables including the number of male and female athletes, the number of male and female coaches, and the revenue of male and female sports. There is also information on coaching salaries. There are no ethical concerns we foresee arising.</p>
 </section>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
-<ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
-</ul>
+<p>While women's sports do receive significant funding at colleges, the investment into women's sports is often a lot less than that of many male programs at the same schools. (citation 2) The NCAA's investments into a myriad of college sports programs shows a stark contrast in both investment and revenue between male and female athletics programs (citation 1). We decided to analyze and visualize this discrepancy using data from the Equity in Athletics Data Analysis (EADA). Since there are mandatory reports from post-secondary institutions that receive Title IX funding, we were able to analyze the differences in expenses (how much money was spent on an athletic program) and revenue (how much money a program brought in). Clearly, different sports and schools will have significant differences in costs and revenue depending on variables not quantified in this report. With that in mind, we focused on data from a single sport, basketball, for consistency. Our hypothesis is that a general trend between schools in the Atlantic Coast Conference will show a significant imbalance in revenue and expenses between men and women's basketball programs. Data collection occurred between 2020 and 2021, and the data set consists of variables such as the number of male and female athletes, the number of male and female coaches and their salaries, as well as the total revenue and expenses of male and female basketball teams. There are no ethical concerns we foresee arising in our analysis due to the mandatory reporting necessary for schools with Title IX funding.</p>
 </section>
 <section id="literature" class="level2">
 <h2 class="anchored" data-anchor-id="literature">Literature</h2>
-<ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
-</ul>
+<p>https://globalsportmatters.com/business/2022/03/11/for-the-ncaa-building-the-business-of-womens-sports-starts-with-basketball/#:~:text=Similarly%2C%20Division%20I%20men’s%20basketball,than%20%24600%20million%20in%20revenue.</p>
+<p>https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/</p>
+<p>https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals</p>
+<p>https://www.tandfonline.com/doi/pdf/10.1080/00221546.2006.11778925?casa_token=WIU1GCI895sAAAAA:w1FWFtPuxYNANBTPOiTttNFZ5up_7Cb9aiQqxKUfIkIAt_puuRYouq5c5HSirIe1idZC8qSHlot2jw</p>
+<p>Gender Equity in Intercollegiate Athletics: Determinants of Title IX Compliance</p>
+<p>This article analyzes the progress of Title IX in athletics from the late 1990s to the early 2000s. Their resreach looked at the proportionality gap between the number of male and female athletes. The results show that there was improvement in this gap overall. However, certain institutions had a larger gap including institutions in the south and institutions with football teams. Our questions looks to expand on this research and look at more recent numbers on equity in college athletics.</p>
 </section>
 <section id="glimpse-of-data" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ACC_Basketball_2020_2021.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(basketball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 20
+Columns: 48
+$ Survey.Year                                            &lt;int&gt; 2020, 2020, 202…
+$ UNITID                                                 &lt;int&gt; 164924, 217882,…
+$ OPE.ID                                                 &lt;int&gt; 212800, 342500,…
+$ Institution.Name                                       &lt;chr&gt; "Boston College…
+$ State.CD                                               &lt;chr&gt; "MA", "SC", "NC…
+$ Classification.Name                                    &lt;int&gt; 1, 1, 1, 1, 1, …
+$ Classification.Other                                   &lt;lgl&gt; NA, NA, NA, NA,…
+$ Sanction.Code                                          &lt;int&gt; 1, 1, 1, 1, 1, …
+$ Sanction.Name                                          &lt;chr&gt; "NCAA", "NCAA",…
+$ Male.Undergraduates                                    &lt;int&gt; 4470, 10005, 32…
+$ Female.Undergraduates                                  &lt;int&gt; 5083, 10013, 33…
+$ Total.Undergraduates                                   &lt;int&gt; 9553, 20018, 65…
+$ Sport.Code                                             &lt;int&gt; 2, 2, 2, 2, 2, …
+$ Sport.Name                                             &lt;chr&gt; "Basketball", "…
+$ X..Participants.Men.s.Team                             &lt;int&gt; 17, 15, 15, 19,…
+$ X..Participants.Women.s.Team                           &lt;int&gt; 12, 14, 14, 13,…
+$ X..Participants.Men.Coed.Team                          &lt;lgl&gt; NA, NA, NA, NA,…
+$ X..Participants.Women.Coed.Team                        &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total...Participants.Men.s.Team.Men.Coed.Team          &lt;int&gt; 17, 15, 15, 19,…
+$ Total...Participants.Women.s.Team.Women.Coed.Team      &lt;int&gt; 12, 14, 14, 13,…
+$ Operating.Expenses.per.Participant.Men.s.Team          &lt;int&gt; 82341, 43668, 6…
+$ Operating.Expenses.per.Team.Men.s.Team                 &lt;int&gt; 1399799, 655019…
+$ Operating.Expenses.per.Participant.Women.s.Team        &lt;int&gt; 86606, 40056, 8…
+$ Operating.Expenses.per.Team.Women.s.Team               &lt;int&gt; 1039276, 560784…
+$ Total.Operating.Expenses.Men.s.Team.and.Women.s.Team   &lt;int&gt; 2439075, 121580…
+$ Operating.Expenses.per.Participant.Men.Coed.Team       &lt;lgl&gt; NA, NA, NA, NA,…
+$ Operating.Expenses.per.Team.Men.Coed.Team              &lt;lgl&gt; NA, NA, NA, NA,…
+$ Operating.Expenses.per.Participant.Women.Coed.Team     &lt;lgl&gt; NA, NA, NA, NA,…
+$ Operating.Expenses.per.Team.Women.Coed.Team            &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Operating.Expenses.Men.Coed.Team.Women.Coed.Team &lt;lgl&gt; NA, NA, NA, NA,…
+$ Revenues.Men.s.Team                                    &lt;int&gt; 5962476, 627466…
+$ Revenues.Women.s.Team                                  &lt;int&gt; 2355742, 336787…
+$ Total.Revenues.For.Men.s.Team.and.Women.s.Team         &lt;int&gt; 8318218, 964254…
+$ Revenues.Men.Coed.Team                                 &lt;lgl&gt; NA, NA, NA, NA,…
+$ Revenues.Women.Coed.Team                               &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Revenues.Men.Coed.Team.Women.Coed.Team           &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Revenues.Men.s.Team.and.Men.Coed.Team            &lt;int&gt; 5962476, 627466…
+$ Total.Revenues.Women.s.Team.and.Women.Coed.Team        &lt;int&gt; 2355742, 336787…
+$ Total.Revenues.Men.s.Team.Women.s.Team.and.Coed.Team   &lt;int&gt; 8318218, 964254…
+$ Expenses.Men.s.Team                                    &lt;int&gt; 7739270, 627466…
+$ Expenses.Women.s.Team                                  &lt;int&gt; 3687363, 336787…
+$ Total.Expenses.Men.s.Team.and.Women.s.Team             &lt;int&gt; 11426633, 96425…
+$ Expenses.Men.Coed.Team                                 &lt;lgl&gt; NA, NA, NA, NA,…
+$ Expenses.Women.Coed.Team                               &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Expenses.Men.Coed.Team.and.Women.Coed.Team       &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Expenses.Men.s.Team.and.Men.Coed.Team            &lt;int&gt; 7739270, 627466…
+$ Total.Expenses.Women.s.Team.and..Women.Coed.Team       &lt;int&gt; 3687363, 336787…
+$ Total.Expenses.Men.s.Team.Women.s.Team.and.Coed.Team   &lt;int&gt; 11426633, 96425…</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -262,28 +311,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
 <li><p>Write a brief description of the observations.</p></li>
 </ul>
-</section>
-<section id="research-question-1" class="level2">
-<h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
+<p>Federal law requires spills, explosions, and other events involving the spread of toxic chemicals to be reported to the Pipeline and Hazardous Materials Safety Administration (PHMSA). Whether reported by individuals or companies, PHMSA shows these reports on their online portal. However, the data collection of the agency is not idea for analysis. The Data Liberation Project fetches the data from the portal and organizes the data in a way that can be used for statistical analysis. Granted, the amount of data collected is overwhelming, so there will be a focus on data specifically from February 2023. Data seems to show locations and descriptions of the incidents, along with a plethora of other information.</p>
+<p>Research question</p>
 <ul>
 <li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
+</ul>
+<p>What chemicals are most often found in hazardous spills? How frequently do spills occur? In what situation are these spills most likely to take place.</p>
+<ul>
 <li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
+</ul>
+<p>The primary goal of this research is to discover causes of hazardous spills and who is usually responsible for them.</p>
+<ul>
 <li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
 </ul>
+<p>The majority of these variables are categorical because spills depend on a myriad of factors. However, percentages may come into play when considering chemical analysis</p>
 </section>
 <section id="literature-1" class="level2">
 <h2 class="anchored" data-anchor-id="literature-1">Literature</h2>
 <ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
+<li><p>Find one published credible article on the topic you are interested in researching.</p>
+<p>https://abcnews.go.com/US/feds-norfolk-southerns-handling-additional-reported-hazmat-concern/story?id=97723774</p></li>
 <li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
 </ul>
+<p>The article highlights one of the most high profile chemical spills of the last few years. A train derailment in East Palestine, Ohio caused an extreme amount of toxic chemicals to be released into the the surrounding area. Beyond that, there seems to be concerns about additional hazards that were previously unreported according to the federal government. The event has become national news and has brought into question regulations surrounding toxic chemical transport and potentially neglect on behalf of the company Norfolk Southern</p>
+<ul>
+<li>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</li>
+</ul>
+<p>The research question takes a larger look at hazardous spill incidents and how they are potentially caused. While the East Palestine train derailment is the most infamous example as of late, these spills are actually much more common than many might realize.</p>
 </section>
 <section id="glimpse-of-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
+<ul>
+<li>Running into a slight issue here with opening the file</li>
+</ul>
 </section>
 </section>
 <section id="data-3" class="level1">
@@ -291,31 +354,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction-and-data-2" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data-2">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li><p>The source of data is <a href="https://www.census.gov/library/visualizations/interactive/racial-and-ethnic-diversity-in-the-united-states-2010-and-2020-census.html" class="uri">https://www.census.gov/library/visualizations/interactive/racial-and-ethnic-diversity-in-the-united-states-2010-and-2020-census.html</a>&nbsp;</p></li>
+<li><p>The data was collected from the <strong>2010 Census and 2020 Census.</strong></p></li>
+<li><p>From looking at the data we can see that there seems to be a higher level of diversity in the western coast states in the US. Furthermore, he states in the Midwest tend to have lesser racial diversity. Furthermore there is a toggle option to switch between the 2010 and 2020 US map to see the changes in racial diversity in each state. This data is mainly used to represent the census data of each race within a state. It specializes in measuring the DI (Diversity Index) which is the probability that two people chosen at random will be from different racial or ethnicity groups.</p></li>
 </ul>
 </section>
-<section id="research-question-2" class="level2">
-<h2 class="anchored" data-anchor-id="research-question-2">Research question</h2>
+<section id="research-question-1" class="level2">
+<h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
 <ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+<li><p>Which US state is best for a family that values racial and ethnic diversity considering the livability as well?&nbsp;</p></li>
+<li><p>The research topic gives people the opportunity to examine racial diversity within certain states to decide whether they would like living there. There is a lot of uncertainty within understanding the demographics of a certain place that people would like to live because people do not have not traveled to many cities.</p>
+<ul>
+<li>My hypothesis is that the best state for racial diversity is California as it ranks high up in the census and also has large cities with job hubs for good livability. &nbsp;</li>
+</ul></li>
+<li><p>There are categorical and quantitative variables as the dataset analyzes race categories and population data. &nbsp;</p></li>
 </ul>
 </section>
 <section id="literature-2" class="level2">
 <h2 class="anchored" data-anchor-id="literature-2">Literature</h2>
 <ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
+<li><p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5848096/" class="uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5848096/</a>&nbsp;</p></li>
+<li><p>This NIH article touches on the historic context of racial diversity in America. It shows the map of level of racial diversity between 1980 and 2015. It also expands on what racial groups are most dominant in which states so it provides a lot more context and data of racial diversity in each state. It’s main purpose is to examine the racial trends within the nation and also predicts future trajectories in the Diversity Index. It also provides reasoning behind certain demographic trends as it looks into immigration, higher fertility, and age structures and trends.</p></li>
+<li><p>My research question builds on the information listed in this article because it takes it further and makes individuals think about where they would want to raise their family. It takes into consideration the vast census data and demographic trends of the data to make one think what state they would prefer to live in based on the demographics.</p></li>
 </ul>
 </section>
 <section id="glimpse-of-data-2" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-2">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<p>New data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ACC_Basketball_2020_2021.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(basketball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 20
+Columns: 48
+$ Survey.Year                                            &lt;int&gt; 2020, 2020, 202…
+$ UNITID                                                 &lt;int&gt; 164924, 217882,…
+$ OPE.ID                                                 &lt;int&gt; 212800, 342500,…
+$ Institution.Name                                       &lt;chr&gt; "Boston College…
+$ State.CD                                               &lt;chr&gt; "MA", "SC", "NC…
+$ Classification.Name                                    &lt;int&gt; 1, 1, 1, 1, 1, …
+$ Classification.Other                                   &lt;lgl&gt; NA, NA, NA, NA,…
+$ Sanction.Code                                          &lt;int&gt; 1, 1, 1, 1, 1, …
+$ Sanction.Name                                          &lt;chr&gt; "NCAA", "NCAA",…
+$ Male.Undergraduates                                    &lt;int&gt; 4470, 10005, 32…
+$ Female.Undergraduates                                  &lt;int&gt; 5083, 10013, 33…
+$ Total.Undergraduates                                   &lt;int&gt; 9553, 20018, 65…
+$ Sport.Code                                             &lt;int&gt; 2, 2, 2, 2, 2, …
+$ Sport.Name                                             &lt;chr&gt; "Basketball", "…
+$ X..Participants.Men.s.Team                             &lt;int&gt; 17, 15, 15, 19,…
+$ X..Participants.Women.s.Team                           &lt;int&gt; 12, 14, 14, 13,…
+$ X..Participants.Men.Coed.Team                          &lt;lgl&gt; NA, NA, NA, NA,…
+$ X..Participants.Women.Coed.Team                        &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total...Participants.Men.s.Team.Men.Coed.Team          &lt;int&gt; 17, 15, 15, 19,…
+$ Total...Participants.Women.s.Team.Women.Coed.Team      &lt;int&gt; 12, 14, 14, 13,…
+$ Operating.Expenses.per.Participant.Men.s.Team          &lt;int&gt; 82341, 43668, 6…
+$ Operating.Expenses.per.Team.Men.s.Team                 &lt;int&gt; 1399799, 655019…
+$ Operating.Expenses.per.Participant.Women.s.Team        &lt;int&gt; 86606, 40056, 8…
+$ Operating.Expenses.per.Team.Women.s.Team               &lt;int&gt; 1039276, 560784…
+$ Total.Operating.Expenses.Men.s.Team.and.Women.s.Team   &lt;int&gt; 2439075, 121580…
+$ Operating.Expenses.per.Participant.Men.Coed.Team       &lt;lgl&gt; NA, NA, NA, NA,…
+$ Operating.Expenses.per.Team.Men.Coed.Team              &lt;lgl&gt; NA, NA, NA, NA,…
+$ Operating.Expenses.per.Participant.Women.Coed.Team     &lt;lgl&gt; NA, NA, NA, NA,…
+$ Operating.Expenses.per.Team.Women.Coed.Team            &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Operating.Expenses.Men.Coed.Team.Women.Coed.Team &lt;lgl&gt; NA, NA, NA, NA,…
+$ Revenues.Men.s.Team                                    &lt;int&gt; 5962476, 627466…
+$ Revenues.Women.s.Team                                  &lt;int&gt; 2355742, 336787…
+$ Total.Revenues.For.Men.s.Team.and.Women.s.Team         &lt;int&gt; 8318218, 964254…
+$ Revenues.Men.Coed.Team                                 &lt;lgl&gt; NA, NA, NA, NA,…
+$ Revenues.Women.Coed.Team                               &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Revenues.Men.Coed.Team.Women.Coed.Team           &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Revenues.Men.s.Team.and.Men.Coed.Team            &lt;int&gt; 5962476, 627466…
+$ Total.Revenues.Women.s.Team.and.Women.Coed.Team        &lt;int&gt; 2355742, 336787…
+$ Total.Revenues.Men.s.Team.Women.s.Team.and.Coed.Team   &lt;int&gt; 8318218, 964254…
+$ Expenses.Men.s.Team                                    &lt;int&gt; 7739270, 627466…
+$ Expenses.Women.s.Team                                  &lt;int&gt; 3687363, 336787…
+$ Total.Expenses.Men.s.Team.and.Women.s.Team             &lt;int&gt; 11426633, 96425…
+$ Expenses.Men.Coed.Team                                 &lt;lgl&gt; NA, NA, NA, NA,…
+$ Expenses.Women.Coed.Team                               &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Expenses.Men.Coed.Team.and.Women.Coed.Team       &lt;lgl&gt; NA, NA, NA, NA,…
+$ Total.Expenses.Men.s.Team.and.Men.Coed.Team            &lt;int&gt; 7739270, 627466…
+$ Total.Expenses.Women.s.Team.and..Women.Coed.Team       &lt;int&gt; 3687363, 336787…
+$ Total.Expenses.Men.s.Team.Women.s.Team.and.Coed.Team   &lt;int&gt; 11426633, 96425…</code></pre>
+</div>
 </div>
 
 
@@ -392,7 +516,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
