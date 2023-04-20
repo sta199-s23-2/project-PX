@@ -11,6 +11,7 @@ execute:
 #| label: load-pkgs
 
 library(tidyverse)
+library(tidymodels)
 ```
 
 ```{r}
@@ -66,10 +67,12 @@ bball_sum_stats <- mens_bball_sum_stats |>
 2\) Visualizations: bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
 
 ```{r}
-bball_sum_stats
+bball_sum_stats 
 ```
 
 ```{r}
+#| label: school-up-values 
+
 pivoted_rev <- bball_sum_stats |>
 pivot_longer(
 cols = c("avg_rev_men","avg_rev_women"),
@@ -138,18 +141,145 @@ In answering our research question of "How do men's college basketball revenues 
 
 ## Results
 
-Showcase how you arrived at answers to your research question using the techniques we have learned in class (and beyond, if you're feeling adventurous).
-
--   **My notes:** Basically interpret the graphs, for instance if the majority of the men's teams had greater revenue to expenses ratios or the majority of women's teams had greater expenses to revenue ratio, etc.
-
-**Note: TL;DR Keep it accurate and thorough but simple**
-
--   Provide **only the main results** from your analysis. The goal is not to do an exhaustive data analysis (calculate every possible statistic and perform every possible procedure for all variables). Rather, you should demonstrate that you are proficient at asking meaningful questions and answering them using data, that you are skilled in interpreting and presenting results, and that you can accomplish these tasks using R. **More is not better.**
-
-"How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?"
-
-Overview of Results:
+Overview of Graphs:
 
 From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men's vs Women's Basketball in 2020-2021, the men's programs in every ACC college produce more revenue. At Duke, the men's program produced over \$30 million in revenue while the women's program produces less than \$5 million. Every college in the ACC has their men's basketball program producing over double of their women's team except University of Miami and Clemson University. We are able to infer that Men's basketball programs in the ACC produce more than women's by a high margin. Boston college, NC state, and Syracuse Women's basketball programs produce less than \$2 million.
 
 To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly \$1 million in revenue in 2020-2021, but had roughly \$5 million in expenses that year. The Duke men's program had the highest expenses at almost \$20 million, but still produced over \$30 million in revenue so they were still profitable.
+
+To more effectively answer our research question we created a hypothesis test to analyze both program's revenue:
+
+Null Hypothesis:
+
+The true mean revenue of ACC men's basketball programs is equal to the true mean revenue of ACC woman's basketball programs.
+
+$H_0 : \mu_m - \mu_w = 0$
+
+Alternative hypothesis:
+
+The true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs.
+
+$H_1 : \mu_m - \mu_w > 0$
+
+The defined variables are:
+
+$\mu_m$ = true mean revenue of ACC men's basketball programs
+
+$\mu_w$ = true mean revenue of ACC woman's basketball programs
+
+```{r}
+#| label: calculating-the-obs-stat
+
+mens_mean_revenue <- bball_sum_stats |>
+  summarize(mean(avg_rev_men))
+
+womens_mean_revenue <- bball_sum_stats |>
+  summarize(mean(avg_rev_women))
+
+(mens_mean_revenue + womens_mean_revenue)/2
+
+obs_stat = mens_mean_revenue - womens_mean_revenue
+
+obs_stat
+
+```
+
+We can see that the observed statistic is 12212932.
+
+```{r}
+#| more-simple-data-frame
+
+rev_data <- bball_sum_stats|>
+  select(Institution.Name, avg_rev_men, avg_rev_women) |>
+  pivot_longer(!Institution.Name, names_to = "gender", values_to = "rev")
+```
+
+```{r}
+#| calculating-the-p-value
+  
+revenue_comparison = c("avg_rev_men", "avg_rev_women")
+
+rev_data |>
+  group_by(gender) |>
+  summarize(mean(rev))
+
+null_dist <- rev_data |>
+  specify(response = rev, explanatory = gender) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 5000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("avg_rev_men", "avg_rev_women"))
+
+
+null_dist |>
+  get_p_value(obs_stat, direction = "right")
+
+```
+
+From this calculation we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs.
+
+We alsocreated a hypothesis test to analyze both program's expenses:
+
+Null Hypothesis:
+
+The true mean expenses of ACC men's basketball programs is equal to the true mean revenue of ACC woman's basketball programs.
+
+$H_0 : \mu_m - \mu_w = 0$
+
+Alternative hypothesis:
+
+The true mean expenses of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs.
+
+$H_1 : \mu_m - \mu_w > 0$
+
+The defined variables are:
+
+$\mu_m$ = true mean expenses of ACC men's basketball programs
+
+$\mu_w$ = true mean expenses of ACC woman's basketball programs
+
+```{r}
+#| label: calculating-the-obs-stat
+
+mens_mean_expenses <- bball_sum_stats |>
+  summarize(mean(avg_exp_men))
+
+womens_mean_expenses <- bball_sum_stats |>
+  summarize(mean(avg_exp_women))
+
+(mens_mean_expenses + womens_mean_expenses)/2
+
+obs_stat = mens_mean_expenses - womens_mean_expenses
+
+obs_stat
+```
+
+```{r}
+#| more-simple-data-frame
+
+exp_data <- bball_sum_stats|>
+  select(Institution.Name, avg_exp_men, avg_exp_women) |>
+  pivot_longer(!Institution.Name, names_to = "gender", values_to = "exp")
+```
+
+```{r}
+#| calculating-the-p-value
+  
+revenue_comparison = c("avg_exp_men", "avg_exp_women")
+
+exp_data |>
+  group_by(gender) |>
+  summarize(mean(exp))
+
+null_dist <- exp_data |>
+  specify(response = exp, explanatory = gender) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 5000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("avg_exp_men", "avg_exp_women"))
+
+
+null_dist |>
+  get_p_value(obs_stat, direction = "right")
+
+```
+
+From this calculation we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean expenses of ACC men's basketball programs is greater than the true mean expenses of ACC woman's basketball programs.
