@@ -219,24 +219,6 @@ From this calculation we can see that the p-value is 0 which means there is a 0 
 
 We alsocreated a hypothesis test to analyze both program's expenses:
 
-Null Hypothesis:
-
-The true mean expenses of ACC men's basketball programs is equal to the true mean revenue of ACC woman's basketball programs.
-
-$H_0 : \mu_m - \mu_w = 0$
-
-Alternative hypothesis:
-
-The true mean expenses of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs.
-
-$H_1 : \mu_m - \mu_w > 0$
-
-The defined variables are:
-
-$\mu_m$ = true mean expenses of ACC men's basketball programs
-
-$\mu_w$ = true mean expenses of ACC woman's basketball programs
-
 ```{r}
 #| label: calculating-the-obs-stat
 
