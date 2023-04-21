@@ -9,6 +9,7 @@ editor: visual
 #| label: load-pkgs
 
 library(tidyverse)
+library(tidymodels)
 ```
 
 # Data 1
