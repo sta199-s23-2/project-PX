@@ -33,6 +33,7 @@ Diaz, J. (2021, October 27). The NCAA's focus on profits means far more gets spe
 Jope, C. (2022, November 9). NCAA Men's VS Women's Basketball: Revenue, viewership, attendance. World Sports Network.https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/
 
 ## Methodology
+
 In answering our research question of "How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?" we first narrowed down the data to ACC schools as that would keep the distribution of the data used more uniform and limit the confounding variables. The objective of the study is to display the differences between women's and men's basketball in funding and revenue output, so in doing that we believed creating a bar graph would allow the audience to visualize the size of the difference (double or even triple). Furthermore, grouping the data by each college in the ACC is very important because every program has different user bases and revenue streams so the viewer can take into account the colleges marketing. For example, Duke basketball generates a ton of revenue from their brand as they recruit the top high school recruits, giving the viewer a context of why Duke's difference between men's and women's is larger than the rest of the ACC. Lastly, we focused on mean data rather than median data as we compared the average expenses and revenues of college programs during the 2020 and 2021 year as it is a more accurate measure of comparison.
 
 ```{r}
@@ -64,6 +65,7 @@ bball_sum_stats
 ```
 
 =======
+
 ```{r}
 #| label: school-up-values 
 
@@ -129,13 +131,13 @@ Men's vs Women's Basketball in 2020-2021") +
   scale_fill_discrete(name = "Stat", labels = c("Revenue", "Expenses"))
 ```
 
-
 ## Results
+
 From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men's vs Women's Basketball in 2020-2021, the men's programs in every ACC college produce more revenue. At Duke, the men's program produced over 30 million dollars in revenue while the women's program produces less than \$5 million. Every college in the ACC has their men's basketball program producing over double of their women's team except University of Miami and Clemson University. We are able to infer that Men's basketball programs in the ACC produce more than women's by a high margin. Boston college, NC state, and Syracuse Women's basketball programs produce less than 2 million dollars.
 
 To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly 1 million dollars in revenue in 2020-2021, but had roughly 5 million dollars in expenses that year. The Duke men's program had the highest expenses at almost 20 million dollars, but still produced over 30 million dollars in revenue so they were still profitable.
 
-To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly 1 million dollars in revenue in 2020-2021, but had roughly 5 million dollars in expenses that year. The Duke men's program had the highest expenses at almost $20 million dollars, but still produced over 30 million dollars in revenue so they were still profitable.
+To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly 1 million dollars in revenue in 2020-2021, but had roughly 5 million dollars in expenses that year. The Duke men's program had the highest expenses at almost \$20 million dollars, but still produced over 30 million dollars in revenue so they were still profitable.
 
 Thus, to answer the research question we can conclude that men's basketball programs in the ACC produce more revenues and have higher expenses than women's programs, but the women's programs have higher expenses than revenues while most men's programs relatively have higher revenues than expenses.
 
@@ -207,9 +209,9 @@ null_dist |>
 
 ```
 
-From this calculation we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs. This hypothesis makes sense to the context in our society as march maddness and the NBA is known to earn far more than the women's tournament and the WNBA. 
+From this calculation, we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC women's basketball programs. This hypothesis makes sense in the context of our society as the men's March Madness and the NBA are known to earn far more than the women's tournament and the WNBA.
 
-We alsocreated a hypothesis test to analyze both program's expenses:
+We also created a hypothesis test to analyze both program's expenses:
 
 ```{r}
 #| label: calculating-the-obs-stat
@@ -228,7 +230,7 @@ obs_stat
 ```
 
 ```{r}
-#| more-simple-data-frame
+#| label: more-simple-data-frame
 
 exp_data <- bball_sum_stats|>
   select(Institution.Name, avg_exp_men, avg_exp_women) |>
@@ -236,7 +238,7 @@ exp_data <- bball_sum_stats|>
 ```
 
 ```{r}
-#| calculating-the-p-value
+#| label: calculating-the-p-value
   
 revenue_comparison = c("avg_exp_men", "avg_exp_women")
 
@@ -256,3 +258,4 @@ null_dist |>
 
 ```
 
+From this calculation, we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean expenses of ACC men's basketball programs are greater than the true mean revenue of ACC women's basketball programs. Having fewer expenses for women's programs makes sense because there has been a known conflict of unpaying WNBA players compared to NBA players.
