@@ -159,7 +159,7 @@ The defined variables are:
 
 $\mu_m$ = true mean revenue of ACC men's basketball programs
 
-$\mu_w$ = true mean revenue of ACC woman's basketball programs.
+$\mu_w$ = true mean revenue of ACC women's basketball programs.
 
 ```{r}
 #| label: calculating-the-obs-stat
@@ -212,6 +212,24 @@ null_dist |>
 From this calculation, we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC women's basketball programs. This hypothesis makes sense in the context of our society as the men's March Madness and the NBA are known to earn far more than the women's tournament and the WNBA.
 
 We also created a hypothesis test to analyze both program's expenses:
+
+Null Hypothesis:
+
+The true mean expenses of ACC men's basketball programs is equal to the true mean expenses of ACC woman's basketball programs.
+
+$H_2 : \mu_m - \mu_w = 0$
+
+Alternative hypothesis:
+
+The true mean expenses of ACC men's basketball programs is greater than the true mean expenses of ACC woman's basketball programs.
+
+$H_3 : \mu_m - \mu_w > 0$
+
+The defined variables are:
+
+$\mu_m$ = true mean expenses of ACC men's basketball programs
+
+$\mu_w$ = true mean expenses of ACC women's basketball programs.
 
 ```{r}
 #| label: calculating-the-obs-stat
