@@ -252,3 +252,4 @@ null_dist |>
 
 ```
 
+From this calculation we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs. 
