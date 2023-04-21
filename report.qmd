@@ -22,25 +22,18 @@ basketball <- read.csv("data/ACC_Basketball_2020_2021.csv")
 
 ## Introduction and data
 
-**Research question:** How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?
+It is well known that D1 sports programs generate a lot of revenue for universities. Whether it be through brand deals, alumni donations, or some other form of income, college sports tend to be profitable. However, there are discrepancies between sports programs based on gender. Our research question is:
 
-To-do's: review/polish, added background, and cite sources with footnote and link at bottom, only 1 data set needed
+How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?
 
-This data came from Equity in Athletics Data Analysis (EADA). It was collected through mandatory reports from post-secondary institutions that receive Title IX funding. The data was collected from 2020 and 2021. The data is looking as equity in college athletics by comparing different aspects of male and female sports. This specific dataset is looking at all schools in the Atlantic Coast Conference. Data was collected on multiple variables including the number of male and female athletes, the number of male and female coaches, and the revenue of male and female sports. There is also information on coaching salaries. There are no ethical concerns we foresee arising.
+While women's sports do receive significant funding at colleges, the investment into women's sports is often a lot less than that of many male programs at the same schools. The NCAA's investments into a myriad of college sports programs shows a stark contrast in both investment and revenue between male and female athletics programs. We decided to analyze and visualize this discrepancy using data from the Equity in Athletics Data Analysis (EADA). Since there are mandatory reports from post-secondary institutions that receive Title IX funding, we were able to analyze the differences in expenses (how much money was spent on an athletic program) and revenue (how much money a program brought in). Clearly, different sports and schools will have significant differences in costs and revenue depending on variables not quantified in this report. With that in mind, we focused on data from a single sport, basketball, for consistency. Our hypothesis is that a general trend between schools in the Atlantic Coast Conference will show a significant imbalance in revenue and expenses between men and women's basketball programs. Data collection occurred between 2020 and 2021, and the data set consists of variables such as the number of male and female athletes, the number of male and female coaches and their salaries, as well as the total revenue and expenses of male and female basketball teams. There are no ethical concerns we foresee arising in our analysis due to the mandatory reporting necessary for schools with Title IX funding.
 
-https://globalsportmatters.com/business/2022/03/11/for-the-ncaa-building-the-business-of-womens-sports-starts-with-basketball/#:\~:text=Similarly%2C%20Division%20I%20men's%20basketball,than%20%24600%20million%20in%20revenue.
+Diaz, J. (2021, October 27). The NCAA's focus on profits means far more gets spent on men's Championships. NPR. https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals
 
-https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/
-
-https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals
+Jope, C. (2022, November 9). NCAA Men's VS Women's Basketball: Revenue, viewership, attendance. World Sports Network.https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/
 
 ## Methodology
-
-**Note: don't use co-ed, the four variables looked at are "Revenues.Men.s.Team" vs "Revenues.Women.s.Team" and "Expenses.Men.s.Team" vs "Expenses.Women.s.Team"**
-
-1\) summary statistics: calculating average between 2020 and 2021 for each school in each metric (i.e., mens vs. women's revenue and expenses, so 4 metrics: mens average revenue, mens average expenses, womens average revenue, and womens average expenses)
-
-**Then using those averages, calculate average difference between men's and women's revenues, then average difference between men's and women's expenses**
+In answering our research question of "How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?" we first narrowed down the data to ACC schools as that would keep the distribution of the data used more uniform and limit the confounding variables. The objective of the study is to display the differences between women's and men's basketball in funding and revenue output, so in doing that we believed creating a bar graph would allow the audience to visualize the size of the difference (double or even triple). Furthermore, grouping the data by each college in the ACC is very important because every program has different user bases and revenue streams so the viewer can take into account the colleges marketing. For example, Duke basketball generates a ton of revenue from their brand as they recruit the top high school recruits, giving the viewer a context of why Duke's difference between men's and women's is larger than the rest of the ACC. Lastly, we focused on mean data rather than median data as we compared the average expenses and revenues of college programs during the 2020 and 2021 year as it is a more accurate measure of comparison.
 
 ```{r}
 #| label: calculate-2020-2021-averages
@@ -64,12 +57,13 @@ bball_sum_stats <- mens_bball_sum_stats |>
 
 ```
 
-2\) Visualizations: bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
+Visualizations: bar graph of men's revenue and expenses vs women's revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men's vs women's revenues, then men's vs. women's expenses, faceted by school, using averages calculated above again
 
 ```{r}
 bball_sum_stats 
 ```
 
+=======
 ```{r}
 #| label: school-up-values 
 
@@ -88,7 +82,7 @@ values_to = c("expense"))
 pivoted_vs <- bball_sum_stats |>
 pivot_longer(
 cols = c("rev_diff","exp_diff"),
-names_to = "ref_vs_diff",
+names_to = "ref_vs_exp",
 values_to = c("amount"))
 ```
 
@@ -97,7 +91,7 @@ values_to = c("amount"))
 
 plot_rev <- ggplot(pivoted_rev, aes(Institution.Name, revenue, fill=gender_rev))
 plot_rev + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "University",
        y = "Revenue in $",
        title = "Average Revenue in the ACC for 
@@ -113,7 +107,7 @@ Men's vs Women's Basketball in 2020-2021") +
 
 plot_exp <- ggplot(pivoted_exp, aes(Institution.Name, expense, fill=gender_exp))
 plot_exp + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "University",
        y = "Expenses in $",
        title = "Average Expenses in the ACC for 
@@ -125,27 +119,21 @@ Men's vs Women's Basketball in 2020-2021") +
 ```{r}
 #| label: diff-expense-revenue
 
-plot_vs <- ggplot(pivoted_vs, aes(Institution.Name, amount, fill=ref_vs_diff))
+plot_vs <- ggplot(pivoted_vs, aes(Institution.Name, amount, fill=ref_vs_exp))
 plot_vs + geom_bar(stat = "identity", position = 'dodge') +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "University",
        y = "Amount in $",
        title = "Difference in Average Revenues and Expenses in the ACC for 
 Men's vs Women's Basketball in 2020-2021") +
-  scale_fill_discrete(name = "Gender", labels = c("Men", "Women"))
+  scale_fill_discrete(name = "Stat", labels = c("Revenue", "Expenses"))
 ```
 
-**3) Justify the choice of statistical method(s) used to answer your research question**
-
-In answering our research question of "How do men's college basketball revenues and expenses compare to women's college basketball revenues and expenses?" we first narrowed down the data to ACC schools as that would keep the distribution of the data used more uniform and limit the confounding variables. The objective of the study is to display the differences between women's and men's basketball in funding and revenue output, so in doing that we believed creating a bar graph would allow the audience to visualize the size of the difference (double or even triple). Furthermore, grouping the data by each college in the ACC is very important because every program has different user bases and revenue streams so the viewer can take into account the colleges marketing. For example, Duke basketball generates a ton of revenue from their brand as they recruit the top high school recruits, giving the viewer a context of why Duke's difference between men's and women's is larger than the rest of the ACC. Lastly, we focused on mean data rather than median data as we compared the average expenses and revenues of college programs during the 2020 and 2021 year as it is a more accurate measure of comparison.
 
 ## Results
+From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men's vs Women's Basketball in 2020-2021, the men's programs in every ACC college produce more revenue. At Duke, the men's program produced over 30 million dollars in revenue while the women's program produces less than \$5 million. Every college in the ACC has their men's basketball program producing over double of their women's team except University of Miami and Clemson University. We are able to infer that Men's basketball programs in the ACC produce more than women's by a high margin. Boston college, NC state, and Syracuse Women's basketball programs produce less than 2 million dollars.
 
-Overview of Graphs:
-
-From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men's vs Women's Basketball in 2020-2021, the men's programs in every ACC college produce more revenue. At Duke, the men's program produced over \$30 million in revenue while the women's program produces less than \$5 million. Every college in the ACC has their men's basketball program producing over double of their women's team except University of Miami and Clemson University. We are able to infer that Men's basketball programs in the ACC produce more than women's by a high margin. Boston college, NC state, and Syracuse Women's basketball programs produce less than \$2 million.
-
-To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly \$1 million in revenue in 2020-2021, but had roughly \$5 million in expenses that year. The Duke men's program had the highest expenses at almost \$20 million, but still produced over \$30 million in revenue so they were still profitable.
+To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly \$1 million in revenue in 2020-2021, but had roughly \$5 million in expenses that year. The Duke men's program had the highest expenses at almost \$20 million, but still produced over $30 million in revenue so they were still profitable.
 
 To more effectively answer our research question we created a hypothesis test to analyze both program's revenue:
 
@@ -264,4 +252,3 @@ null_dist |>
 
 ```
 
-From this calculation we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean expenses of ACC men's basketball programs is greater than the true mean expenses of ACC woman's basketball programs.
