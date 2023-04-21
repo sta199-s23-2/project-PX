@@ -133,7 +133,7 @@ Men's vs Women's Basketball in 2020-2021") +
 ## Results
 From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men's vs Women's Basketball in 2020-2021, the men's programs in every ACC college produce more revenue. At Duke, the men's program produced over 30 million dollars in revenue while the women's program produces less than \$5 million. Every college in the ACC has their men's basketball program producing over double of their women's team except University of Miami and Clemson University. We are able to infer that Men's basketball programs in the ACC produce more than women's by a high margin. Boston college, NC state, and Syracuse Women's basketball programs produce less than 2 million dollars.
 
-To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly \$1 million in revenue in 2020-2021, but had roughly \$5 million in expenses that year. The Duke men's program had the highest expenses at almost \$20 million, but still produced over $30 million in revenue so they were still profitable.
+To look at the second part of the question we have to look at the bar graph for men's and women's programs expenses. We can see that the expenses for all men's basketball programs are higher than women's. However, only Duke, Syracuse, and Louisville men's programs have expenses that are more than double than the women's programs. The expenses for all the women's teams are also higher than the revenues. For example, Unc chapel hill's women's team generated roughly 1 million dollars in revenue in 2020-2021, but had roughly 5 million dollars in expenses that year. The Duke men's program had the highest expenses at almost 20 million dollars, but still produced over 30 million dollars in revenue so they were still profitable.
 
 To more effectively answer our research question we created a hypothesis test to analyze both program's revenue:
 
@@ -203,7 +203,7 @@ null_dist |>
 
 ```
 
-From this calculation we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs.
+From this calculation we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men's basketball programs is greater than the true mean revenue of ACC woman's basketball programs. 
 
 We alsocreated a hypothesis test to analyze both program's expenses:
 
