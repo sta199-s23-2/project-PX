@@ -153,7 +153,7 @@ The defined variables are:
 
 $\mu_m$ = true mean revenue of ACC men's basketball programs
 
-$\mu_w$ = true mean revenue of ACC woman's basketball programs
+$\mu_w$ = true mean revenue of ACC woman's basketball programs.
 
 ```{r}
 #| label: calculating-the-obs-stat
