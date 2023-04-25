@@ -268,14 +268,14 @@ exp_data |>
   group_by(gender) |>
   summarize(mean(exp))
 
-null_dist <- exp_data |>
+null_dist2 <- exp_data |>
   specify(response = exp, explanatory = gender) |>
   hypothesize(null = "independence") |>
   generate(reps = 5000, type = "permute") |>
   calculate(stat = "diff in means", order = c("avg_exp_men", "avg_exp_women"))
 
 
-null_dist |>
+null_dist2 |>
   get_p_value(obs_stat, direction = "right")
 
 ```
