@@ -185,7 +185,7 @@ obs_stat
 We can see that the observed statistic is 12212932.
 
 ```{r}
-#| more-simple-data-frame
+#| label: more-simple-data-frame-fix
 
 rev_data <- bball_sum_stats|>
   select(Institution.Name, avg_rev_men, avg_rev_women) |>
@@ -193,7 +193,7 @@ rev_data <- bball_sum_stats|>
 ```
 
 ```{r}
-#| calculating-the-p-value
+#| label: calculating-the-p-value
   
 revenue_comparison = c("avg_rev_men", "avg_rev_women")
 
@@ -236,7 +236,7 @@ $\mu_m$ = true mean expenses of ACC men's basketball programs
 $\mu_w$ = true mean expenses of ACC women's basketball programs.
 
 ```{r}
-#| label: calculating-the-obs-stat
+#| label: calculating-the-obs-stat-2
 
 mens_mean_expenses <- bball_sum_stats |>
   summarize(mean(avg_exp_men))
@@ -260,7 +260,7 @@ exp_data <- bball_sum_stats|>
 ```
 
 ```{r}
-#| label: calculating-the-p-value
+#| label: calculating-the-p-value-2
   
 revenue_comparison = c("avg_exp_men", "avg_exp_women")
 

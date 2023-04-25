@@ -205,61 +205,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
+✔ broom        1.0.2     ✔ rsample      1.1.1
+✔ dials        1.1.0     ✔ tune         1.0.1
+✔ infer        1.0.4     ✔ workflows    1.1.2
+✔ modeldata    1.0.1     ✔ workflowsets 1.0.0
+✔ parsnip      1.0.3     ✔ yardstick    1.1.0
+✔ recipes      1.0.3     
+── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ scales::discard() masks purrr::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ recipes::fixed()  masks stringr::fixed()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ACC_Basketball_2020_2021.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ACC_Basketball_2020_2021.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="introduction-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h2>
-<<<<<<< HEAD
-<p><strong>Research question:</strong> How do men’s college basketball revenues and expenses compare to women’s college basketball revenues and expenses?</p>
-<p>To-do’s: review/polish, added background, and cite sources with footnote and link at bottom, only 1 data set needed</p>
-<p>This data came from Equity in Athletics Data Analysis (EADA). It was collected through mandatory reports from post-secondary institutions that receive Title IX funding. The data was collected from 2020 and 2021. The data is looking as equity in college athletics by comparing different aspects of male and female sports. This specific dataset is looking at all schools in the Atlantic Coast Conference. Data was collected on multiple variables including the number of male and female athletes, the number of male and female coaches, and the revenue of male and female sports. There is also information on coaching salaries. There are no ethical concerns we foresee arising.</p>
-<p>https://globalsportmatters.com/business/2022/03/11/for-the-ncaa-building-the-business-of-womens-sports-starts-with-basketball/#:~:text=Similarly%2C%20Division%20I%20men’s%20basketball,than%20%24600%20million%20in%20revenue.</p>
-<p>https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/</p>
-<p>https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals</p>
-</section>
-<section id="methodology" class="level2">
-<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
-<p><strong>Note: don’t use co-ed, the four variables looked at are “Revenues.Men.s.Team” vs “Revenues.Women.s.Team” and “Expenses.Men.s.Team” vs “Expenses.Women.s.Team”</strong></p>
-<p>1) summary statistics: calculating average between 2020 and 2021 for each school in each metric (i.e., mens vs.&nbsp;women’s revenue and expenses, so 4 metrics: mens average revenue, mens average expenses, womens average revenue, and womens average expenses)</p>
-<p><strong>Then using those averages, calculate average difference between men’s and women’s revenues, then average difference between men’s and women’s expenses</strong></p>
-=======
 <p>It is well known that D1 sports programs generate a lot of revenue for universities. Whether it be through brand deals, alumni donations, or some other form of income, college sports tend to be profitable. However, there are discrepancies between sports programs based on gender. Our research question is:</p>
-<p><strong>How do men’s college basketball revenues and expenses compare to women’s college basketball revenues and expenses?</strong></p>
-<p>While women’s sports do receive significant funding at colleges, the investment into women’s sports is often a lot less than that of many male programs at the same schools. ^[2] The NCAA’s investments into a myriad of college sports programs shows a stark contrast in both investment and revenue between male and female athletics programs ^[1]. We decided to analyze and visualize this discrepancy using data from the Equity in Athletics Data Analysis (EADA). Since there are mandatory reports from post-secondary institutions that receive Title IX funding, we were able to analyze the differences in expenses (how much money was spent on an athletic program) and revenue (how much money a program brought in). Clearly, different sports and schools will have significant differences in costs and revenue depending on variables not quantified in this report. With that in mind, we focused on data from a single sport, basketball, for consistency. Our hypothesis is that a general trend between schools in the Atlantic Coast Conference will show a significant imbalance in revenue and expenses between men and women’s basketball programs. Data collection occurred between 2020 and 2021, and the data set consists of variables such as the number of male and female athletes, the number of male and female coaches and their salaries, as well as the total revenue and expenses of male and female basketball teams. There are no ethical concerns we foresee arising in our analysis due to the mandatory reporting necessary for schools with Title IX funding.</p>
-<p>[1] Diaz, J. (2021, October 27). <em>The NCAA’s focus on profits means far more gets spent on men’s Championships</em>. NPR. https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals</p>
-<p>[2] Jope, C. (2022, November 9). <em>NCAA Men’s VS Women’s Basketball: Revenue, viewership, attendance</em>. World Sports Network.https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/</p>
+<p>How do men’s college basketball revenues and expenses compare to women’s college basketball revenues and expenses?</p>
+<p>While women’s sports do receive significant funding at colleges, the investment into women’s sports is often a lot less than that of many male programs at the same schools. The NCAA’s investments into a myriad of college sports programs shows a stark contrast in both investment and revenue between male and female athletics programs. We decided to analyze and visualize this discrepancy using data from the Equity in Athletics Data Analysis (EADA). Since there are mandatory reports from post-secondary institutions that receive Title IX funding, we were able to analyze the differences in expenses (how much money was spent on an athletic program) and revenue (how much money a program brought in). Clearly, different sports and schools will have significant differences in costs and revenue depending on variables not quantified in this report. With that in mind, we focused on data from a single sport, basketball, for consistency. Our hypothesis is that a general trend between schools in the Atlantic Coast Conference will show a significant imbalance in revenue and expenses between men and women’s basketball programs. Data collection occurred between 2020 and 2021, and the data set consists of variables such as the number of male and female athletes, the number of male and female coaches and their salaries, as well as the total revenue and expenses of male and female basketball teams. There are no ethical concerns we foresee arising in our analysis due to the mandatory reporting necessary for schools with Title IX funding.</p>
+<p>Diaz, J. (2021, October 27). The NCAA’s focus on profits means far more gets spent on men’s Championships. NPR. https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals</p>
+<p>Jope, C. (2022, November 9). NCAA Men’s VS Women’s Basketball: Revenue, viewership, attendance. World Sports Network.https://www.wsn.com/ncaam-basketball/ncaa-men-vs-women-basketball/</p>
 </section>
 <section id="methodology" class="level2">
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
 <p>In answering our research question of “How do men’s college basketball revenues and expenses compare to women’s college basketball revenues and expenses?” we first narrowed down the data to ACC schools as that would keep the distribution of the data used more uniform and limit the confounding variables. The objective of the study is to display the differences between women’s and men’s basketball in funding and revenue output, so in doing that we believed creating a bar graph would allow the audience to visualize the size of the difference (double or even triple). Furthermore, grouping the data by each college in the ACC is very important because every program has different user bases and revenue streams so the viewer can take into account the colleges marketing. For example, Duke basketball generates a ton of revenue from their brand as they recruit the top high school recruits, giving the viewer a context of why Duke’s difference between men’s and women’s is larger than the rest of the ACC. Lastly, we focused on mean data rather than median data as we compared the average expenses and revenues of college programs during the 2020 and 2021 year as it is a more accurate measure of comparison.</p>
->>>>>>> refs/remotes/origin/main
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mens_bball_sum_stats <span class="ot">&lt;-</span> basketball <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Institution.Name) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_rev_men =</span> <span class="fu">mean</span>(Revenues.Men.s.Team), </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_exp_men =</span> <span class="fu">mean</span>(Expenses.Men.s.Team)) </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>womens_bball_sum_stats <span class="ot">&lt;-</span> basketball <span class="sc">|&gt;</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Institution.Name) <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_rev_women =</span> <span class="fu">mean</span>(Revenues.Women.s.Team),</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_exp_women =</span> <span class="fu">mean</span>(Expenses.Women.s.Team)) </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>bball_sum_stats <span class="ot">&lt;-</span> mens_bball_sum_stats <span class="sc">|&gt;</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(womens_bball_sum_stats) <span class="sc">|&gt;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rev_diff =</span> avg_rev_men <span class="sc">-</span> avg_rev_women) <span class="sc">|&gt;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exp_diff =</span> avg_exp_men <span class="sc">-</span> avg_exp_women) <span class="sc">|&gt;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rev_diff =</span> <span class="fu">as.factor</span>(rev_diff)) <span class="sc">|&gt;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exp_diff =</span> <span class="fu">as.factor</span>(exp_diff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mens_bball_sum_stats <span class="ot">&lt;-</span> basketball <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Institution.Name) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_rev_men =</span> <span class="fu">mean</span>(Revenues.Men.s.Team), </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_exp_men =</span> <span class="fu">mean</span>(Expenses.Men.s.Team)) </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>womens_bball_sum_stats <span class="ot">&lt;-</span> basketball <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Institution.Name) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_rev_women =</span> <span class="fu">mean</span>(Revenues.Women.s.Team),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_exp_women =</span> <span class="fu">mean</span>(Expenses.Women.s.Team)) </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>bball_sum_stats <span class="ot">&lt;-</span> mens_bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(womens_bball_sum_stats) <span class="sc">|&gt;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rev_diff =</span> avg_rev_men <span class="sc">-</span> avg_rev_women) <span class="sc">|&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exp_diff =</span> avg_exp_men <span class="sc">-</span> avg_exp_women) <span class="sc">|&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rev_diff =</span> <span class="fu">as.factor</span>(rev_diff)) <span class="sc">|&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exp_diff =</span> <span class="fu">as.factor</span>(exp_diff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining, by = "Institution.Name"</code></pre>
 </div>
 </div>
-<<<<<<< HEAD
-<p>2) Visualizations: bar graph of men’s revenue and expenses vs women’s revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men’s vs women’s revenues, then men’s vs.&nbsp;women’s expenses, faceted by school, using averages calculated above again</p>
+<p>Visualizations: bar graph of men’s revenue and expenses vs women’s revenue and expenses faceted by school using averages from calculated summary statistics; bar graph of men’s vs women’s revenues, then men’s vs.&nbsp;women’s expenses, faceted by school, using averages calculated above again</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bball_sum_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bball_sum_stats </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 7
    Institution.Name              avg_r…¹ avg_e…² avg_r…³ avg_e…⁴ rev_d…⁵ exp_d…⁶
@@ -278,149 +280,219 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #   ⁴​avg_exp_women, ⁵​rev_diff, ⁶​exp_diff</code></pre>
 </div>
 </div>
+<p>=======</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pivoted_rev <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"avg_rev_men"</span>,<span class="st">"avg_rev_women"</span>),</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"gender_rev"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"revenue"</span>))</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>pivoted_exp <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"avg_exp_men"</span>,<span class="st">"avg_exp_women"</span>),</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"gender_exp"</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"expense"</span>))</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>pivoted_vs <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"rev_diff"</span>,<span class="st">"exp_diff"</span>),</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"ref_vs_diff"</span>,</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"amount"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pivoted_rev <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"avg_rev_men"</span>,<span class="st">"avg_rev_women"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"gender_rev"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"revenue"</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>pivoted_exp <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"avg_exp_men"</span>,<span class="st">"avg_exp_women"</span>),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"gender_exp"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"expense"</span>))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>pivoted_vs <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"rev_diff"</span>,<span class="st">"exp_diff"</span>),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"ref_vs_exp"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"amount"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">amount =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(amount)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_rev <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_rev, <span class="fu">aes</span>(Institution.Name, revenue, <span class="at">fill=</span>gender_rev))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plot_rev <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Revenue in $"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Average Revenue in the ACC for </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Gender"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>)) <span class="sc">+</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pivoted_rev <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"avg_rev_men"</span>,<span class="st">"avg_rev_women"</span>),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"gender_rev"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"revenue"</span>))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>pivoted_exp <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"avg_exp_men"</span>,<span class="st">"avg_exp_women"</span>),</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"gender_exp"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"expense"</span>))</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>pivoted_vs <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"rev_diff"</span>,<span class="st">"exp_diff"</span>),</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">"ref_vs_exp"</span>,</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="fu">c</span>(<span class="st">"amount"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_rev <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_rev, <span class="fu">aes</span>(Institution.Name, revenue, <span class="at">fill=</span>gender_rev))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plot_rev <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Revenue in $"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Average Revenue in the ACC for </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Gender"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>)) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
->>>>>>> refs/remotes/origin/main
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plot_rev <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_rev, <span class="fu">aes</span>(Institution.Name, revenue, <span class="at">fill=</span>gender_rev))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plot_rev <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Revenue in $"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Average Revenue in the ACC for </span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Gender"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>)) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/school-revenue-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<<<<<<< HEAD
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot_exp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_exp, <span class="fu">aes</span>(Institution.Name, expense, <span class="at">fill=</span>gender_exp))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plot_exp <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Expenses in $"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Average Expenses in the ACC for </span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Gender"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>)) <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_exp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_exp, <span class="fu">aes</span>(Institution.Name, expense, <span class="at">fill=</span>gender_exp))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plot_exp <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Expenses in $"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Average Expenses in the ACC for </span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Gender"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>)) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
->>>>>>> refs/remotes/origin/main
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot_exp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_exp, <span class="fu">aes</span>(Institution.Name, expense, <span class="at">fill =</span> gender_exp))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plot_exp <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Expenses in $"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Average Expenses in the ACC for </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Gender"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>)) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/school-expenses-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<<<<<<< HEAD
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plot_vs <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_vs, <span class="fu">aes</span>(Institution.Name, amount, <span class="at">fill=</span>ref_vs_diff))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plot_vs <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Amount in $"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Difference in Average Revenues and Expenses in the ACC for </span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Gender"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_vs <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_vs, <span class="fu">aes</span>(Institution.Name, amount, <span class="at">fill=</span>ref_vs_exp))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plot_vs <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Amount in $"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Difference in Average Revenues and Expenses in the ACC for </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Stat"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Revenue"</span>, <span class="st">"Expenses"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
->>>>>>> refs/remotes/origin/main
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_vs <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pivoted_vs, <span class="fu">aes</span>(Institution.Name, amount, <span class="at">fill=</span>ref_vs_exp))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plot_vs <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">'dodge'</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Amount in $"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Difference in Average Revenues and Expenses in the ACC for </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="st">Men's vs Women's Basketball in 2020-2021"</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Stat"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Revenue"</span>, <span class="st">"Expenses"</span>)) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(pivoted_vs<span class="sc">$</span>amount, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="dv">1000000</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>), </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/diff-expense-revenue-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<<<<<<< HEAD
-<p><strong>3) Justify the choice of statistical method(s) used to answer your research question</strong></p>
-<p>In answering our research question of “How do men’s college basketball revenues and expenses compare to women’s college basketball revenues and expenses?” we first narrowed down the data to ACC schools as that would keep the distribution of the data used more uniform and limit the confounding variables. The objective of the study is to display the differences between women’s and men’s basketball in funding and revenue output, so in doing that we believed creating a bar graph would allow the audience to visualize the size of the difference (double or even triple). Furthermore, grouping the data by each college in the ACC is very important because every program has different user bases and revenue streams so the viewer can take into account the colleges marketing. For example, Duke basketball generates a ton of revenue from their brand as they recruit the top high school recruits, giving the viewer a context of why Duke’s difference between men’s and women’s is larger than the rest of the ACC. Lastly, we focused on mean data rather than median data as we compared the average expenses and revenues of college programs during the 2020 and 2021 year as it is a more accurate measure of comparison.</p>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>In analyzing the results</p>
-<p><span class="math inline">\(H_0 : \mu = 7600\)</span></p>
-<p>Showcase how you arrived at answers to your research question using the techniques we have learned in class (and beyond, if you’re feeling adventurous).</p>
-<ul>
-<li><strong>My notes:</strong> Basically interpret the graphs, for instance if the majority of the men’s teams had greater revenue to expenses ratios or the majority of women’s teams had greater expenses to revenue ratio, etc.</li>
-</ul>
-<p><strong>Note: TL;DR Keep it accurate and thorough but simple</strong></p>
-<ul>
-<li>Provide <strong>only the main results</strong> from your analysis. The goal is not to do an exhaustive data analysis (calculate every possible statistic and perform every possible procedure for all variables). Rather, you should demonstrate that you are proficient at asking meaningful questions and answering them using data, that you are skilled in interpreting and presenting results, and that you can accomplish these tasks using R. <strong>More is not better.</strong></li>
-</ul>
-<p>“How do men’s college basketball revenues and expenses compare to women’s college basketball revenues and expenses?”</p>
-<p>Overview of Results:</p>
-<p>From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men’s vs Women’s Basketball in 2020-2021, the men’s programs in every ACC college produce more revenue. At Duke, the men’s program produced over $30 million in revenue while the women’s program produces less than $5 million. Every college in the ACC has their men’s basketball program producing over double of their women’s team except University of Miami and Clemson University. We are able to infer that Men’s basketball programs in the ACC produce more than women’s by a high margin. Boston college, NC state, and Syracuse Women’s basketball programs produce less than $2 million.</p>
-<p>To look at the second part of the question we have to look at the bar graph for men’s and women’s programs expenses. We can see that the expenses for all men’s basketball programs are higher than women’s. However, only Duke, Syracuse, and Louisville men’s programs have expenses that are more than double than the women’s programs. The expenses for all the women’s teams are also higher than the revenues. For example, Unc chapel hill’s women’s team generated roughly $1 million in revenue in 2020-2021, but had roughly $5 million in expenses that year. The Duke men’s program had the highest expenses at almost $20 million, but still produced over $30 million in revenue so they were still profitable.</p>
-=======
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men’s vs Women’s Basketball in 2020-2021, the men’s programs in every ACC college produce more revenue. At Duke, the men’s program produced over $30 million in revenue while the women’s program produces less than $5 million. Every college in the ACC has their men’s basketball program producing over double of their women’s team except University of Miami and Clemson University. We are able to infer that Men’s basketball programs in the ACC produce more than women’s by a high margin. Boston college, NC state, and Syracuse Women’s basketball programs produce less than $2 million.</p>
-<p>To look at the second part of the question we have to look at the bar graph for men’s and women’s programs expenses. We can see that the expenses for all men’s basketball programs are higher than women’s. However, only Duke, Syracuse, and Louisville men’s programs have expenses that are more than double than the women’s programs. The expenses for all the women’s teams are also higher than the revenues. For example, Unc chapel hill’s women’s team generated roughly $1 million in revenue in 2020-2021, but had roughly $5 million in expenses that year. The Duke men’s program had the highest expenses at almost $20 million, but still produced over $30 million in revenue so they were still profitable.</p>
+<p>From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men’s vs Women’s Basketball in 2020-2021, the men’s programs in every ACC college produce more revenue. At Duke, the men’s program produced over 30 million dollars in revenue while the women’s program produces less than $5 million. Every college in the ACC has their men’s basketball program producing over double of their women’s team except University of Miami and Clemson University. We are able to infer that Men’s basketball programs in the ACC produce more than women’s by a high margin. Boston college, NC state, and Syracuse Women’s basketball programs produce less than 2 million dollars.</p>
+<p>To look at the second part of the question we have to look at the bar graph for men’s and women’s programs expenses. We can see that the expenses for all men’s basketball programs are higher than women’s. However, only Duke, Syracuse, and Louisville men’s programs have expenses that are more than double than the women’s programs. The expenses for all the women’s teams are also higher than the revenues. For example, Unc chapel hill’s women’s team generated roughly 1 million dollars in revenue in 2020-2021, but had roughly 5 million dollars in expenses that year. The Duke men’s program had the highest expenses at almost 20 million dollars, but still produced over 30 million dollars in revenue so they were still profitable.</p>
+<p>To look at the second part of the question we have to look at the bar graph for men’s and women’s programs expenses. We can see that the expenses for all men’s basketball programs are higher than women’s. However, only Duke, Syracuse, and Louisville men’s programs have expenses that are more than double than the women’s programs. The expenses for all the women’s teams are also higher than the revenues. For example, Unc chapel hill’s women’s team generated roughly 1 million dollars in revenue in 2020-2021, but had roughly 5 million dollars in expenses that year. The Duke men’s program had the highest expenses at almost $20 million dollars, but still produced over 30 million dollars in revenue so they were still profitable.</p>
 <p>Thus, to answer the research question we can conclude that men’s basketball programs in the ACC produce more revenues and have higher expenses than women’s programs, but the women’s programs have higher expenses than revenues while most men’s programs relatively have higher revenues than expenses.</p>
-<p>A big factor to take into account is the COVID-19 pandemic as this decimated a lot of the revenue streams for basketball as no game tickets were offered.</p>
->>>>>>> refs/remotes/origin/main
+<p>To more effectively answer our research question we created a hypothesis test to analyze both program’s revenue:</p>
+<p>Null Hypothesis:</p>
+<p>The true mean revenue of ACC men’s basketball programs is equal to the true mean revenue of ACC woman’s basketball programs.</p>
+<p><span class="math inline">\(H_0 : \mu_m - \mu_w = 0\)</span></p>
+<p>Alternative hypothesis:</p>
+<p>The true mean revenue of ACC men’s basketball programs is greater than the true mean revenue of ACC woman’s basketball programs.</p>
+<p><span class="math inline">\(H_1 : \mu_m - \mu_w &gt; 0\)</span></p>
+<p>The defined variables are:</p>
+<p><span class="math inline">\(\mu_m\)</span> = true mean revenue of ACC men’s basketball programs</p>
+<p><span class="math inline">\(\mu_w\)</span> = true mean revenue of ACC women’s basketball programs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mens_mean_revenue <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(avg_rev_men))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>womens_mean_revenue <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(avg_rev_women))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>(mens_mean_revenue <span class="sc">+</span> womens_mean_revenue)<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean(avg_rev_men)
+1           9120788</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>obs_stat <span class="ot">=</span> mens_mean_revenue <span class="sc">-</span> womens_mean_revenue</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>obs_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean(avg_rev_men)
+1          12212932</code></pre>
+</div>
+</div>
+<p>We can see that the observed statistic is 12212932.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rev_data <span class="ot">&lt;-</span> bball_sum_stats<span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Institution.Name, avg_rev_men, avg_rev_women) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>Institution.Name, <span class="at">names_to =</span> <span class="st">"gender"</span>, <span class="at">values_to =</span> <span class="st">"rev"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>revenue_comparison <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"avg_rev_men"</span>, <span class="st">"avg_rev_women"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>rev_data <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(rev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  gender        `mean(rev)`
+  &lt;chr&gt;               &lt;dbl&gt;
+1 avg_rev_men     15227254.
+2 avg_rev_women    3014322.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>null_dist <span class="ot">&lt;-</span> rev_data <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> rev, <span class="at">explanatory =</span> gender) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">5000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"avg_rev_men"</span>, <span class="st">"avg_rev_women"</span>))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>null_dist <span class="sc">|&gt;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_p_value</span>(obs_stat, <span class="at">direction =</span> <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Please be cautious in reporting a p-value of 0. This result is an
+approximation based on the number of `reps` chosen in the `generate()` step. See
+`?get_p_value()` for more information.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  p_value
+    &lt;dbl&gt;
+1       0</code></pre>
+</div>
+</div>
+<p>From this calculation, we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean revenue of ACC men’s basketball programs is greater than the true mean revenue of ACC women’s basketball programs. This hypothesis makes sense in the context of our society as the men’s March Madness and the NBA are known to earn far more than the women’s tournament and the WNBA.</p>
+<p>We also created a hypothesis test to analyze both program’s expenses:</p>
+<p>Null Hypothesis:</p>
+<p>The true mean expenses of ACC men’s basketball programs is equal to the true mean expenses of ACC woman’s basketball programs.</p>
+<p><span class="math inline">\(H_2 : \mu_m - \mu_w = 0\)</span></p>
+<p>Alternative hypothesis:</p>
+<p>The true mean expenses of ACC men’s basketball programs is greater than the true mean expenses of ACC woman’s basketball programs.</p>
+<p><span class="math inline">\(H_3 : \mu_m - \mu_w &gt; 0\)</span></p>
+<p>The defined variables are:</p>
+<p><span class="math inline">\(\mu_m\)</span> = true mean expenses of ACC men’s basketball programs</p>
+<p><span class="math inline">\(\mu_w\)</span> = true mean expenses of ACC women’s basketball programs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mens_mean_expenses <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(avg_exp_men))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>womens_mean_expenses <span class="ot">&lt;-</span> bball_sum_stats <span class="sc">|&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(avg_exp_women))</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>(mens_mean_expenses <span class="sc">+</span> womens_mean_expenses)<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean(avg_exp_men)
+1           7847944</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>obs_stat <span class="ot">=</span> mens_mean_expenses <span class="sc">-</span> womens_mean_expenses</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>obs_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean(avg_exp_men)
+1           6288384</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>exp_data <span class="ot">&lt;-</span> bball_sum_stats<span class="sc">|&gt;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Institution.Name, avg_exp_men, avg_exp_women) <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>Institution.Name, <span class="at">names_to =</span> <span class="st">"gender"</span>, <span class="at">values_to =</span> <span class="st">"exp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>revenue_comparison <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"avg_exp_men"</span>, <span class="st">"avg_exp_women"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>exp_data <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">|&gt;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(exp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  gender        `mean(exp)`
+  &lt;chr&gt;               &lt;dbl&gt;
+1 avg_exp_men     10992136.
+2 avg_exp_women    4703752 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>null_dist2 <span class="ot">&lt;-</span> exp_data <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> exp, <span class="at">explanatory =</span> gender) <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">5000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"avg_exp_men"</span>, <span class="st">"avg_exp_women"</span>))</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>null_dist2 <span class="sc">|&gt;</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_p_value</span>(obs_stat, <span class="at">direction =</span> <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Please be cautious in reporting a p-value of 0. This result is an
+approximation based on the number of `reps` chosen in the `generate()` step. See
+`?get_p_value()` for more information.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  p_value
+    &lt;dbl&gt;
+1       0</code></pre>
+</div>
+</div>
+<p>From this calculation, we can see that the p-value is 0 which means there is a 0 percent chance of the null hypothesis being rejected when it is true. A rule of thumb is that when the p-value is less than 0.05 we can reject the null hypothesis. Thus, we can reject the null hypothesis and accept the alternate hypothesis that the true mean expenses of ACC men’s basketball programs are greater than the true mean revenue of ACC women’s basketball programs. Having fewer expenses for women’s programs makes sense because there has been a known conflict of unpaying WNBA players compared to NBA players.</p>
 
 
 </section>

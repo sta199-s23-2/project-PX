@@ -221,6 +221,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
+✔ broom        1.0.2     ✔ rsample      1.1.1
+✔ dials        1.1.0     ✔ tune         1.0.1
+✔ infer        1.0.4     ✔ workflows    1.1.2
+✔ modeldata    1.0.1     ✔ workflowsets 1.0.0
+✔ parsnip      1.0.3     ✔ yardstick    1.1.0
+✔ recipes      1.0.3     
+── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ scales::discard() masks purrr::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ recipes::fixed()  masks stringr::fixed()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+</div>
 </div>
 <section id="data-1" class="level1">
 <h1>Data 1</h1>
@@ -230,7 +248,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
-<p>While women's sports do receive significant funding at colleges, the investment into women's sports is often a lot less than that of many male programs at the same schools. (citation 2) The NCAA's investments into a myriad of college sports programs shows a stark contrast in both investment and revenue between male and female athletics programs (citation 1). We decided to analyze and visualize this discrepancy using data from the Equity in Athletics Data Analysis (EADA). Since there are mandatory reports from post-secondary institutions that receive Title IX funding, we were able to analyze the differences in expenses (how much money was spent on an athletic program) and revenue (how much money a program brought in). Clearly, different sports and schools will have significant differences in costs and revenue depending on variables not quantified in this report. With that in mind, we focused on data from a single sport, basketball, for consistency. Our hypothesis is that a general trend between schools in the Atlantic Coast Conference will show a significant imbalance in revenue and expenses between men and women's basketball programs. Data collection occurred between 2020 and 2021, and the data set consists of variables such as the number of male and female athletes, the number of male and female coaches and their salaries, as well as the total revenue and expenses of male and female basketball teams. There are no ethical concerns we foresee arising in our analysis due to the mandatory reporting necessary for schools with Title IX funding.</p>
+<p>While women’s sports do receive significant funding at colleges, the investment into women’s sports is often a lot less than that of many male programs at the same schools. (citation 2) The NCAA’s investments into a myriad of college sports programs shows a stark contrast in both investment and revenue between male and female athletics programs (citation 1). We decided to analyze and visualize this discrepancy using data from the Equity in Athletics Data Analysis (EADA). Since there are mandatory reports from post-secondary institutions that receive Title IX funding, we were able to analyze the differences in expenses (how much money was spent on an athletic program) and revenue (how much money a program brought in). Clearly, different sports and schools will have significant differences in costs and revenue depending on variables not quantified in this report. With that in mind, we focused on data from a single sport, basketball, for consistency. Our hypothesis is that a general trend between schools in the Atlantic Coast Conference will show a significant imbalance in revenue and expenses between men and women’s basketball programs. Data collection occurred between 2020 and 2021, and the data set consists of variables such as the number of male and female athletes, the number of male and female coaches and their salaries, as well as the total revenue and expenses of male and female basketball teams. There are no ethical concerns we foresee arising in our analysis due to the mandatory reporting necessary for schools with Title IX funding.</p>
 </section>
 <section id="literature" class="level2">
 <h2 class="anchored" data-anchor-id="literature">Literature</h2>
@@ -244,9 +262,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="glimpse-of-data" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ACC_Basketball_2020_2021.csv"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(basketball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ACC_Basketball_2020_2021.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(basketball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 48
