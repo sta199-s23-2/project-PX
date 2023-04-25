@@ -85,7 +85,8 @@ pivoted_vs <- bball_sum_stats |>
 pivot_longer(
 cols = c("rev_diff","exp_diff"),
 names_to = "ref_vs_exp",
-values_to = c("amount"))
+values_to = c("amount")) |>
+mutate(amount = as.numeric(as.character(amount)))
 ```
 
 ```{r}
@@ -107,7 +108,7 @@ Men's vs Women's Basketball in 2020-2021") +
 ```{r}
 #| label: school-expenses
 
-plot_exp <- ggplot(pivoted_exp, aes(Institution.Name, expense, fill=gender_exp))
+plot_exp <- ggplot(pivoted_exp, aes(Institution.Name, expense, fill = gender_exp))
 plot_exp + geom_bar(stat = "identity", position = 'dodge') +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "University",
@@ -128,7 +129,10 @@ plot_vs + geom_bar(stat = "identity", position = 'dodge') +
        y = "Amount in $",
        title = "Difference in Average Revenues and Expenses in the ACC for 
 Men's vs Women's Basketball in 2020-2021") +
-  scale_fill_discrete(name = "Stat", labels = c("Revenue", "Expenses"))
+  scale_fill_discrete(name = "Stat", labels = c("Revenue", "Expenses")) +
+  scale_y_continuous(limits = c(0, max(pivoted_vs$amount, na.rm = TRUE) + 
+                                  1000000), expand = c(0, 0.05), 
+                     labels = scales::comma)
 ```
 
 ## Results
