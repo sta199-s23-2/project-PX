@@ -135,6 +135,8 @@ Men's vs Women's Basketball in 2020-2021") +
                      labels = scales::comma)
 ```
 
+We also made sure to include a hypothesis test in our data analysis. We conducted the test in the results section to keep the obs stat and p-value in the same place so we could explain the results in a more organized manner. 
+
 ## Results
 
 From analyzing the bar graphs we can notice when looking at Average Revenue in the ACC for Men's vs Women's Basketball in 2020-2021, the men's programs in every ACC college produce more revenue. At Duke, the men's program produced over 30 million dollars in revenue while the women's program produces less than \$5 million. Every college in the ACC has their men's basketball program producing over double of their women's team except University of Miami and Clemson University. We are able to infer that Men's basketball programs in the ACC produce more than women's by a high margin. Boston college, NC state, and Syracuse Women's basketball programs produce less than 2 million dollars.
